@@ -277,14 +277,45 @@ public JButton getSaveButtuon(){
     public String getISBN(){
         return ISBN.getText();
     } 
-    public int  getNumPages(){
-        return Integer.parseInt(numPages.getText());
+    public String  getNumPages(){
+        return numPages.getText();
     }
-    public int getNumCopies(){
-      return Integer.parseInt(numCopies.getText());
+    public String getNumCopies(){
+      return numCopies.getText();
     }
-    public int getShelfNum(String studentID){
-      return Integer.parseInt(numCopies.getText());
+    public String getShelfNum(){
+      return jtfShelfNum.getText();
+    }
+
+    public void setBookTitle(String title){
+        this.bookTitle.setText(title);
+    }
+    public void setBookSubject(String subject){
+        this.bookSubject.setText(subject);
+    }
+    public void setPublisher(String publisher){
+        this.publisher.setText(publisher);
+    }
+    public void setAuthor(String author){
+        this.author.setText(author);
+    }
+    public void setEdition(String edition){
+        this.edition.setText(edition);
+    }
+    public void setCopyright(String copyright){
+        this.copyright.setText(copyright);
+    }
+    public void setISBN(String isbn){
+        this.ISBN.setText(isbn);
+    }
+    public void setNumPages(int numPages){
+        this.numPages.setText(Integer.toString(numPages));
+    }
+    public void setNumCopies(int numCopies){
+        this.numCopies.setText(Integer.toString(numCopies));
+    }
+    public void setShelfNum(int shelfNum){
+        this.jtfShelfNum.setText(Integer.toString(shelfNum));
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ISBN;

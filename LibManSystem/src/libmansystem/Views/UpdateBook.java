@@ -301,24 +301,24 @@ public class UpdateBook extends javax.swing.JFrame {
     public String getISBN(){
         return ISBN.getText();
     } 
-    public int  getNumPages(){
-        return Integer.parseInt(numPages.getText());
+    public String  getNumPages(){
+        return numPages.getText();
     }
-    public int getNumCopies(){
-      return Integer.parseInt(numCopies.getText());
+    public String getNumCopies(){
+      return numCopies.getText();
     }
-    public int getShelfNum(String studentID){
-      return Integer.parseInt(numCopies.getText());
+    public String getShelfNum(){
+      return numCopies.getText();
     }
     
-    public void setBootTile(String title){
+    public void setBookTitle(String title){
         this.title.setText(title);
     }
         public void setBookSubject(String subject){
-        this.title.setText(subject);
+        this.subject.setText(subject);
     }
     public void setPublisher(String publisher){
-        this.subject.setText(publisher);
+        this.publisher.setText(publisher);
     }
     public void setAuthor(String author){
         this.author.setText(author);
@@ -338,7 +338,7 @@ public class UpdateBook extends javax.swing.JFrame {
     public void setNumCopies(int numCopies){
         this.numCopies.setText(Integer.toString(numCopies));
     }
-    public void setShelfNumber(int shelfNum){
+    public void setShelfNum(int shelfNum){
         this.shelfNum.setText(Integer.toString(shelfNum));
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
