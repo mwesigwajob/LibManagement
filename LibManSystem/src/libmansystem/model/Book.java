@@ -9,6 +9,6 @@ package libmansystem.model;
  *
  * @author jobmwesigwa
  */
-public class AddBookModel {
+public class Book {
     
 }
