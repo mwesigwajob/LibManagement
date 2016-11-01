@@ -5,6 +5,8 @@
  */
 package libmansystem.Views;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author Ibrahim-Abdullah
@@ -177,7 +179,7 @@ public class UpdateBook extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(subject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -267,7 +269,78 @@ public class UpdateBook extends javax.swing.JFrame {
             }
         });
     }
-
+    public JButton getEditButton(){
+        return btnEdit;
+    }
+    public JButton getUpdateButton(){
+        return btnUpdate;
+    }
+    
+    public JButton getExitButton(){
+        return btnExit;
+    }
+    public String getBookSubject(){  //another fxn getName() exists!
+        return subject.getText();
+    }
+    
+    public String getBookTitle(){  //another fxn getName() exists!
+        return title.getText();
+    }
+    public String getAuthor(){
+        return author.getText();
+    }
+    public String getPublisher(){
+        return publisher.getText();
+    }
+    public String getCopyright(){
+        return copyright.getText();
+    }
+    public String getEdition(){
+        return edition.getText();
+    }
+    public String getISBN(){
+        return ISBN.getText();
+    } 
+    public int  getNumPages(){
+        return Integer.parseInt(numPages.getText());
+    }
+    public int getNumCopies(){
+      return Integer.parseInt(numCopies.getText());
+    }
+    public int getShelfNum(String studentID){
+      return Integer.parseInt(numCopies.getText());
+    }
+    
+    public void setBootTile(String title){
+        this.title.setText(title);
+    }
+        public void setBookSubject(String subject){
+        this.title.setText(subject);
+    }
+    public void setPublisher(String publisher){
+        this.subject.setText(publisher);
+    }
+    public void setAuthor(String author){
+        this.author.setText(author);
+    }
+    public void setEdition(String edition){
+        this.edition.setText(edition);
+    }
+    public void setCopyright(String copyright){
+        this.copyright.setText(copyright);
+    }
+    public void setISBN(String isbn){
+        this.ISBN.setText(isbn);
+    }
+    public void setNumPages(int numPages){
+        this.numPages.setText(Integer.toString(numPages));
+    }
+    public void setNumCopies(int numCopies){
+        this.numCopies.setText(Integer.toString(numCopies));
+    }
+    public void setShelfNumber(int shelfNum){
+        this.shelfNum.setText(Integer.toString(shelfNum));
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ISBN;
     private javax.swing.JTextField author;
