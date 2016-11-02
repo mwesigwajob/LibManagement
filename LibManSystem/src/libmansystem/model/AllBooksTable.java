@@ -49,17 +49,27 @@ public class AllBooksTable extends AbstractTableModel{
         Book bb = bookList.get(row);
 
         if (col == 0) {
-            return bb.getStudentID();
+            return bb.getBookID();
         } else if (col == 1) {
-            return bb.getSurname();
+            return bb.getSubject();
         } else if (col == 2) {
-            return bb.getFirstname();
+            return bb.getTitle();
         } else if (col == 3) {
-            return bb.getadmissionYear();
+            return bb.getAuthor();
         } else if (col == 4) {
-            return bb.getGPA();
+            return bb.getPublisher();
         } else if (col == 5) {
-            return bb.getProgram();
+            return bb.getCopyright();
+        }else if (col == 6) {
+            return bb.getEdition();
+        } else if (col == 7) {
+            return bb.getNumPages();
+        } else if (col == 8) {
+            return bb.getISBN();
+        } else if (col == 9) {
+            return bb.getNumCopies();
+        } else if (col == 10) {
+            return bb.getShelfNum();
         }
         return bb;
     }
@@ -79,26 +89,41 @@ public class AllBooksTable extends AbstractTableModel{
         b = bookList.get(row);
         switch (col) {
             case 0:
-                b.setStudentID((String) value);
+                b.setBookID(Integer.valueOf((Integer) value));
                 break;
             case 1:
-                b.setSurname(String.valueOf(value));
-                ;
+                b.setSubject(String.valueOf(value));
                 break;
             case 2:
-                b.setFirstname((String) value);
+                b.setTitle(String.valueOf(value));
                 break;
             case 3:
-                b.setadmissionYear(Integer.valueOf((Integer) value));
+                b.setAuthor(String.valueOf(value));
                 break;
             case 4:
-                b.setgpa(Float.valueOf((String) value));
+                b.setPublisher(String.valueOf(value));
                 break;
             case 5:
-                b.setProgram((String) value);
+                b.setCopyright(Integer.valueOf((String) value));
+                break;
+            case 6:
+                b.setEdition(Integer.valueOf((String) value));
+                break;
+            case 7:
+                b.setNumPages(Integer.valueOf((String) value));
+                break;
+            case 8:
+                b.setISBN(String.valueOf(value));
+                break;
+            case 9:
+                b.setNumCopies(Integer.valueOf((String) value));
+                break;
+            case 10:
+                b.setShelfNum(Integer.valueOf((String) value));
+                break;
         }
-
-        fireTableCellUpdated(row, col); //*works best with this
+               
+        fireTableCellUpdated(row, col); //Updating the view
     }
     
     void fetchTableData() {
@@ -110,7 +135,7 @@ public class AllBooksTable extends AbstractTableModel{
 
             Statement s = conn.createStatement();
 
-            ResultSet rs = s.executeQuery("SELECT BookID, Subject, Title, Author,Publisher, Copyright,Edition,Pages,ISBN,NumberOfBooks,ShelfNo  FROM studentdata");
+            ResultSet rs = s.executeQuery("SELECT BookID, Subject, Title, Author, Publisher, Copyright,Edition,Pages,ISBN,NumberOfBooks,ShelfNo  FROM studentdata");
             ResultSetMetaData meta = rs.getMetaData();
             int numberOfColumns = meta.getColumnCount();
             colHeader = new String[numberOfColumns];
@@ -124,14 +149,19 @@ public class AllBooksTable extends AbstractTableModel{
             while (rs.next()) {
 //            ArrayList <String> tmp = new ArrayList<String>();
                 Book st = new Book();
-                st.setStudentID(rs.getString(1));
-                st.setFirstname(rs.getString(2));
-                st.setSurname(rs.getString(3));
-                st.setadmissionYear(Integer.valueOf(rs.getString(4)));
-                st.setgpa(Float.valueOf(rs.getString(5)));
-                st.setProgram(rs.getString(6));
+                st.setBookID(Integer.valueOf(rs.getString(1)));
+                st.setSubject(rs.getString(2));
+                st.setTitle(rs.getString(3));
+                st.setAuthor(rs.getString(4));
+                st.setPublisher(rs.getString(5));
+                st.setCopyright(Integer.valueOf(rs.getString(6)));
+                st.setEdition(Integer.valueOf(rs.getString(7)));
+                st.setNumPages(Integer.valueOf(rs.getString(8)));
+                st.setISBN(rs.getString(9));
+                st.setNumCopies(Integer.valueOf(rs.getString(10)));
+                st.setShelfNum(Integer.valueOf(rs.getString(11)));
 
-                BookList.add(st);
+                bookList.add(st);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -139,5 +169,10 @@ public class AllBooksTable extends AbstractTableModel{
             System.exit(0);
         }
 
+    }
+
+    @Override
+    public int getRowCount() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

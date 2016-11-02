@@ -10,27 +10,34 @@ package libmansystem.model;
  * @author jobmwesigwa
  */
 public class Book {
-    private String subject,title, author,publisher,copyright,edition,isbn;
-    private int numPages,numCopies,shelfNum;
+    private String subject,title, author,publisher,isbn;
+    private int numPages,numCopies,shelfNum,bookID,edition,copyright;
     
     //Default constructor wiith no parameter
     public Book(){
-    this.subject = null; this.copyright =null;this.isbn=null;
+    this.bookID = 0;this.subject = null; this.copyright =0;this.isbn=null;
     this.title = null; this.numPages = 0;this.numCopies = 0;
-    this.author = null;this.shelfNum=0; this.edition=null;
+    this.author = null;this.shelfNum=0; this.edition=0;
     this.publisher = null;
     }
     
     //Constructor with parameter
-    public Book(String sub, String title, String au, String pub, String copy,
-            String is, int pages, int copies,int shelfNum, String edition){
-    this.subject = sub; this.copyright =copy;this.isbn=is;
+    public Book(int ID, String sub, String title, String au, String pub, int copy,
+            String is, int pages, int copies,int shelfNum, int edition){
+    this.bookID=ID;this.subject = sub; this.copyright =copy;this.isbn=is;
     this.title = title; this.numPages = pages;this.numCopies = copies;
     this.author = au;this.shelfNum=shelfNum; this.edition=edition;
     this.publisher = pub;
     }
     
     //Accessor and mutator methods
+    public int getBookID(){
+        return this.bookID;
+    }
+    
+    public void setBookID(int bookID){
+        this.bookID = bookID;
+    }
     public String getSubject(){
         return this.subject;
     }
@@ -59,23 +66,23 @@ public class Book {
     public void setPublisher(String publisher){
         this.publisher = publisher;
     }
-    public String getCopyright(){
+    public int getCopyright(){
         return this.copyright;
     }
-    public void setCopyright(String copyright){
+    public void setCopyright(int copyright){
         this.copyright = copyright;
     }
-    public String getEdition(){
+    public int getEdition(){
         return this.edition;
     }
-    public void setEdition(String edition){
+    public void setEdition(int edition){
         this.edition=edition;
     }
     public String getISBN(){
         return this.isbn;
     }
     public void setISBN(String isbn){
-        this.edition=isbn;
+        this.isbn=isbn;
     }
     public int getNumPages(){
         return this.numPages;
@@ -89,7 +96,7 @@ public class Book {
     public int  getNumCopies(){
         return this.numCopies;
     }
-    public void setShelfum(int shelfNum){
+    public void setShelfNum(int shelfNum){
         this.shelfNum = shelfNum;
     }
     public int getShelfNum(){
