@@ -13,7 +13,8 @@ public class Book {
     private String subject,title, author,publisher,copyright,edition,isbn;
     private int numPages,numCopies,shelfNum;
     
-    //Default constructor wiith no parameter
+    //Default constructor wiith no 
+    
     public Book(){
     this.subject = null; this.copyright =null;this.isbn=null;
     this.title = null; this.numPages = 0;this.numCopies = 0;

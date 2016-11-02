@@ -5,20 +5,40 @@
  */
 package libmansystem.Controller;
 
-import libmansystem.Views.AddBooks;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import libmansystem.Views.Library;
+import libmansystem.model.AllBooksTable;
 
 /**
  *
  * @author Ibrahim-Abdullah
  */
-public class ViewBooksController {
+public class ViewBooksController implements ActionListener{
     Library view;
-    public ViewBooksController(Library addBookFrame) {
-        view =addBookFrame;
-        //model= studentTableModel;
-        //this.tf = tf;        
+    AllBooksTable booksTable;
+    
+    /**
+     * 
+     * @param allBooksView a reference to an object of the AllBooksFrame.
+     * @param booksTable a reference to an instance of table model.
+     */
+    public ViewBooksController(Library allBooksView,AllBooksTable booksTable) {
+        this.view =allBooksView;
+        this.booksTable =booksTable;
     }
+    /**
+     * Add Action listeners to all the menu Items
+     */
     public void control(){
+        view.getAddBooksMenuItem().addActionListener(this);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if(ae.getActionCommand().equalsIgnoreCase("Add Books")){
+            System.out.println("Its working");
+            
+        }
     }
 }

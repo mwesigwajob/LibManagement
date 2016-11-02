@@ -32,7 +32,7 @@ public class AllBooksTable extends AbstractTableModel{
     public AllBooksTable() {
         super();
         bookList = new ArrayList<>();
-        fetchTableData();
+        //fetchTableData();
         
     }
 
@@ -46,22 +46,7 @@ public class AllBooksTable extends AbstractTableModel{
     }
     
     public Object getValueAt(int row, int col) {
-        Book bb = bookList.get(row);
-
-        if (col == 0) {
-            return bb.getStudentID();
-        } else if (col == 1) {
-            return bb.getSurname();
-        } else if (col == 2) {
-            return bb.getFirstname();
-        } else if (col == 3) {
-            return bb.getadmissionYear();
-        } else if (col == 4) {
-            return bb.getGPA();
-        } else if (col == 5) {
-            return bb.getProgram();
-        }
-        return bb;
+        return "sd";
     }
     
     /**
@@ -75,69 +60,50 @@ public class AllBooksTable extends AbstractTableModel{
     }
 
     public void setValueAt(Object value, int row, int col) {
-        Book b;
-        b = bookList.get(row);
-        switch (col) {
-            case 0:
-                b.setStudentID((String) value);
-                break;
-            case 1:
-                b.setSurname(String.valueOf(value));
-                ;
-                break;
-            case 2:
-                b.setFirstname((String) value);
-                break;
-            case 3:
-                b.setadmissionYear(Integer.valueOf((Integer) value));
-                break;
-            case 4:
-                b.setgpa(Float.valueOf((String) value));
-                break;
-            case 5:
-                b.setProgram((String) value);
-        }
-
-        fireTableCellUpdated(row, col); //*works best with this
     }
     
-    void fetchTableData() {
-        try {
-            Connection conn = null;
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
-            conn = java.sql.DriverManager.getConnection(
-                    "jdbc:mysql://localhost/Library?user=root&password=19D15FA1");
+//    void fetchTableData() {
+//        try {
+//            Connection conn = null;
+//            Class.forName("com.mysql.jdbc.Driver").newInstance();
+//            conn = java.sql.DriverManager.getConnection(
+//                    "jdbc:mysql://localhost/Library?user=root&password=0030104018profib");
+//
+//            Statement s = conn.createStatement();
+//
+//            ResultSet rs = s.executeQuery("SELECT BookID, Subject, Title, Author,Publisher, Copyright,Edition,Pages,ISBN,NumberOfBooks,ShelfNo  FROM studentdata");
+//            ResultSetMetaData meta = rs.getMetaData();
+//            int numberOfColumns = meta.getColumnCount();
+//            colHeader = new String[numberOfColumns];
+//            for (int i = 1; i <= numberOfColumns; i++) {
+//                colHeader[i - 1] = meta.getColumnName(i);
+//            }
+//
+//            ArrayList<Object> rows = new ArrayList<Object>();
+//            //get actual row data
+//
+//            while (rs.next()) {
+//////            ArrayList <String> tmp = new ArrayList<String>();
+////                Book st = new Book();
+////                st.setStudentID(rs.getString(1));
+////                st.setFirstname(rs.getString(2));
+////                st.setSurname(rs.getString(3));
+////                st.setadmissionYear(Integer.valueOf(rs.getString(4)));
+////                st.setgpa(Float.valueOf(rs.getString(5)));
+////                st.setProgram(rs.getString(6));
+////
+////                BookList.add(st);
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            System.out.println(e);
+//            System.exit(0);
+//        }
+//
+//    }
 
-            Statement s = conn.createStatement();
-
-            ResultSet rs = s.executeQuery("SELECT BookID, Subject, Title, Author,Publisher, Copyright,Edition,Pages,ISBN,NumberOfBooks,ShelfNo  FROM studentdata");
-            ResultSetMetaData meta = rs.getMetaData();
-            int numberOfColumns = meta.getColumnCount();
-            colHeader = new String[numberOfColumns];
-            for (int i = 1; i <= numberOfColumns; i++) {
-                colHeader[i - 1] = meta.getColumnName(i);
-            }
-
-            ArrayList<Object> rows = new ArrayList<Object>();
-            //get actual row data
-
-            while (rs.next()) {
-//            ArrayList <String> tmp = new ArrayList<String>();
-                Book st = new Book();
-                st.setStudentID(rs.getString(1));
-                st.setFirstname(rs.getString(2));
-                st.setSurname(rs.getString(3));
-                st.setadmissionYear(Integer.valueOf(rs.getString(4)));
-                st.setgpa(Float.valueOf(rs.getString(5)));
-                st.setProgram(rs.getString(6));
-
-                BookList.add(st);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e);
-            System.exit(0);
-        }
-
+    @Override
+    public int getRowCount() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
