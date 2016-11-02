@@ -6,6 +6,7 @@
 package libmansystem.model;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
@@ -124,6 +125,24 @@ public class AllBooksTable extends AbstractTableModel{
         }
                
         fireTableCellUpdated(row, col); //Updating the view
+    }
+    public void deleteRecord(int stId) {
+        for (int i = 0; i < bookList.size(); i++) {
+            if ((bookList.get(i).getBookID()) == stId) {
+                try {
+                    Connection con = null;
+                    Class.forName("com.mysql.jdbc.Driver").newInstance();
+                    con = java.sql.DriverManager.getConnection(
+                            "jdbc:mysql://localhost/studentdatabase?user=root&password=19D15FA1");
+                    PreparedStatement ps = con.prepareStatement("delete from studentdata where StudentID=?");
+                    ps.setInt(1, stId);
+                    System.out.println("Success: " + ps.execute());
+                } catch (Exception e) {
+                    System.out.println("Error " + e.toString());
+                    return;
+                }
+            }
+        }
     }
     
     void fetchTableData() {
