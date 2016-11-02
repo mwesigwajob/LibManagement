@@ -126,6 +126,65 @@ public class AllBooksTable extends AbstractTableModel{
                
         fireTableCellUpdated(row, col); //Updating the view
     }
+    
+    public void addRecord(int id, String sub, String title, String author, String pub, int cpyrt, int edtn, int pgs,String isbn, int numBooks, int shelfNum) {
+        try {
+            Connection con = null;
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            con = java.sql.DriverManager.getConnection(
+                    "jdbc:mysql://localhost/studentdatabase?user=root&password=19D15FA1");
+
+            PreparedStatement ps = con.prepareStatement("Insert into Books set BookID=?, Subject=?, Title=?, Author=?, Publisher=?, Copyright=?, Edition=?, Pages=?, ISBN=?, NumberOfBooks=?, ShelfNo=?");
+            ps.setInt(1, id);
+            ps.setString(2, sub);
+            ps.setString(3, title);
+            ps.setString(4, author);
+            ps.setString(5, pub);
+            ps.setInt(6, cpyrt);
+            ps.setInt(7, edtn);
+            ps.setInt(8, pgs);
+            ps.setString(9, isbn);
+            ps.setInt(10, numBooks);
+            ps.setInt(11, shelfNum);
+            System.out.println(ps.execute());
+            
+        } catch (Exception e) {
+            System.out.println("Error " + e.toString());
+            return;
+        }
+        
+        bookModel.fireTableDataChanged();
+    }
+    
+    public void updateRecord(int id, String sub, String title, String author, String pub, int cpyrt, int edtn, int pgs,String isbn, int numBooks, int shelfNum) {
+        try {
+            Connection con = null;
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            con = java.sql.DriverManager.getConnection(
+                    "jdbc:mysql://localhost/studentdatabase?user=root&password=19D15FA1");
+
+            PreparedStatement ps = con.prepareStatement("update Books set BookID=?, Subject=?, Title=?, Author=?, Publisher=?, Copyright=?, Edition=?, Pages=?, ISBN=?, NumberOfBooks=?, ShelfNo=?");
+            ps.setInt(1, id);
+            ps.setString(2, sub);
+            ps.setString(3, title);
+            ps.setString(4, author);
+            ps.setString(5, pub);
+            ps.setInt(6, cpyrt);
+            ps.setInt(7, edtn);
+            ps.setInt(8, pgs);
+            ps.setString(9, isbn);
+            ps.setInt(10, numBooks);
+            ps.setInt(11, shelfNum);
+            System.out.println(ps.execute());
+            
+        } catch (Exception e) {
+            System.out.println("Error " + e.toString());
+            return;
+        }
+        
+        bookModel.fireTableDataChanged();
+    }
+    
     public void deleteRecord(int stId) {
         for (int i = 0; i < bookList.size(); i++) {
             if ((bookList.get(i).getBookID()) == stId) {
@@ -134,7 +193,7 @@ public class AllBooksTable extends AbstractTableModel{
                     Class.forName("com.mysql.jdbc.Driver").newInstance();
                     con = java.sql.DriverManager.getConnection(
                             "jdbc:mysql://localhost/studentdatabase?user=root&password=19D15FA1");
-                    PreparedStatement ps = con.prepareStatement("delete from studentdata where StudentID=?");
+                    PreparedStatement ps = con.prepareStatement("delete from Books where StudentID=?");
                     ps.setInt(1, stId);
                     System.out.println("Success: " + ps.execute());
                 } catch (Exception e) {
@@ -154,7 +213,7 @@ public class AllBooksTable extends AbstractTableModel{
 
             Statement s = conn.createStatement();
 
-            ResultSet rs = s.executeQuery("SELECT BookID, Subject, Title, Author, Publisher, Copyright,Edition,Pages,ISBN,NumberOfBooks,ShelfNo  FROM studentdata");
+            ResultSet rs = s.executeQuery("SELECT BookID, Subject, Title, Author, Publisher, Copyright,Edition,Pages,ISBN,NumberOfBooks,ShelfNo  FROM Books");
             ResultSetMetaData meta = rs.getMetaData();
             int numberOfColumns = meta.getColumnCount();
             colHeader = new String[numberOfColumns];
@@ -166,7 +225,6 @@ public class AllBooksTable extends AbstractTableModel{
             //get actual row data
 
             while (rs.next()) {
-//            ArrayList <String> tmp = new ArrayList<String>();
                 Book st = new Book();
                 st.setBookID(Integer.valueOf(rs.getString(1)));
                 st.setSubject(rs.getString(2));
