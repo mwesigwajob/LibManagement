@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import libmansystem.Views.*;
+import libmansystem.model.AllBooksTable;
 /**
  *
  * @author Ibrahim-Abdullah
@@ -48,8 +49,9 @@ public class AddBookController implements ActionListener{
             //update the table of books shown in the table
             addBookview.dispose();
             Library allBooksFrame = new Library();
-            //StudentTableModel m= new StudentTableModel();
-            ViewBooksController  viewBooks= new ViewBooksController(allBooksFrame);//remeber to add the model
+            AllBooksTable allBooksTable= new AllBooksTable();
+            ViewBooksController  viewBooks= new ViewBooksController(allBooksFrame,
+                    allBooksTable);//remeber to add the model
             viewBooks.control();
         }
         if (ae.getActionCommand().equalsIgnoreCase("Save")){  
@@ -124,8 +126,9 @@ public class AddBookController implements ActionListener{
             //update the table of books shown in the table
             updateBookView.dispose();
             Library allBooksFrame = new Library();
-            //StudentTableModel m= new StudentTableModel();
-            ViewBooksController  viewBooks= new ViewBooksController(allBooksFrame);//remeber to add the model
+            AllBooksTable allBooksTable= new AllBooksTable();
+            ViewBooksController  viewBooks= new ViewBooksController(allBooksFrame,
+            allBooksTable);//remeber to add the model
             viewBooks.control();
         }
  }
