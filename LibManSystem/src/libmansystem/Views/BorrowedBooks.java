@@ -49,7 +49,7 @@ public class BorrowedBooks extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Borrowed Books");
+        jLabel1.setText("LIST FOR ALL BORROWED BOOKS");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -64,9 +64,12 @@ public class BorrowedBooks extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jMenu1.setMnemonic('B');
         jMenu1.setText("Books");
 
-        jMenuItem1.setText("Add");
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setMnemonic('A');
+        jMenuItem1.setText("Add Book");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -74,44 +77,73 @@ public class BorrowedBooks extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem1);
 
-        jMenuItem2.setText("Remove");
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem2.setMnemonic('R');
+        jMenuItem2.setText("Remove Book");
         jMenu1.add(jMenuItem2);
 
-        jMenuItem3.setText("Update");
+        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem3.setMnemonic('U');
+        jMenuItem3.setText("Update Book");
         jMenu1.add(jMenuItem3);
 
-        jMenuItem4.setText("Search");
+        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem4.setMnemonic('c');
+        jMenuItem4.setText("Search ");
         jMenu1.add(jMenuItem4);
 
-        jMenuItem5.setText("Borrow");
+        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem5.setMnemonic('o');
+        jMenuItem5.setText("Borrow Book");
         jMenu1.add(jMenuItem5);
 
-        jMenuItem6.setText("Return");
+        jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem6.setMnemonic('t');
+        jMenuItem6.setText("Return Book");
         jMenu1.add(jMenuItem6);
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setMnemonic('V');
         jMenu2.setText("View");
 
-        jMenuItem7.setText("All");
+        jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem7.setMnemonic('l');
+        jMenuItem7.setText("All Books");
         jMenu2.add(jMenuItem7);
 
-        jMenuItem8.setText("Borrowed");
+        jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem8.setMnemonic('r');
+        jMenuItem8.setText("Borrowed Books");
         jMenu2.add(jMenuItem8);
 
-        jMenuItem9.setText("Available");
+        jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem9.setMnemonic('v');
+        jMenuItem9.setText("Available Books");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem9);
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setMnemonic('S');
         jMenu3.setText("Search By");
 
+        jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem10.setMnemonic('u');
         jMenuItem10.setText("Author");
         jMenu3.add(jMenuItem10);
 
+        jMenuItem11.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem11.setMnemonic('T');
         jMenuItem11.setText("Title");
         jMenu3.add(jMenuItem11);
 
+        jMenuItem12.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem12.setMnemonic('P');
         jMenuItem12.setText("Publisher");
         jMenu3.add(jMenuItem12);
 
@@ -129,7 +161,7 @@ public class BorrowedBooks extends javax.swing.JFrame {
                         .addGap(47, 47, 47)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(167, 167, 167)
+                        .addGap(130, 130, 130)
                         .addComponent(jLabel1)))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
@@ -149,6 +181,10 @@ public class BorrowedBooks extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     /**
      * @param args the command line arguments
