@@ -46,7 +46,6 @@ public class AllBooksTable extends AbstractTableModel{
     }
     
     public Object getValueAt(int row, int col) {
-<<<<<<< HEAD
         Book bb = bookList.get(row);
 
         if (col == 0) {
@@ -73,9 +72,6 @@ public class AllBooksTable extends AbstractTableModel{
             return bb.getShelfNum();
         }
         return bb;
-=======
-        return "sd";
->>>>>>> e13682a7dcc640eefe3840095dca536a67fcd132
     }
     
     /**
@@ -89,7 +85,6 @@ public class AllBooksTable extends AbstractTableModel{
     }
 
     public void setValueAt(Object value, int row, int col) {
-<<<<<<< HEAD
         Book b;
         b = bookList.get(row);
         switch (col) {
@@ -173,57 +168,11 @@ public class AllBooksTable extends AbstractTableModel{
             System.out.println(e);
             System.exit(0);
         }
-=======
-    }
-    
-//    void fetchTableData() {
-//        try {
-//            Connection conn = null;
-//            Class.forName("com.mysql.jdbc.Driver").newInstance();
-//            conn = java.sql.DriverManager.getConnection(
-//                    "jdbc:mysql://localhost/Library?user=root&password=0030104018profib");
-//
-//            Statement s = conn.createStatement();
-//
-//            ResultSet rs = s.executeQuery("SELECT BookID, Subject, Title, Author,Publisher, Copyright,Edition,Pages,ISBN,NumberOfBooks,ShelfNo  FROM studentdata");
-//            ResultSetMetaData meta = rs.getMetaData();
-//            int numberOfColumns = meta.getColumnCount();
-//            colHeader = new String[numberOfColumns];
-//            for (int i = 1; i <= numberOfColumns; i++) {
-//                colHeader[i - 1] = meta.getColumnName(i);
-//            }
-//
-//            ArrayList<Object> rows = new ArrayList<Object>();
-//            //get actual row data
-//
-//            while (rs.next()) {
-//////            ArrayList <String> tmp = new ArrayList<String>();
-////                Book st = new Book();
-////                st.setStudentID(rs.getString(1));
-////                st.setFirstname(rs.getString(2));
-////                st.setSurname(rs.getString(3));
-////                st.setadmissionYear(Integer.valueOf(rs.getString(4)));
-////                st.setgpa(Float.valueOf(rs.getString(5)));
-////                st.setProgram(rs.getString(6));
-////
-////                BookList.add(st);
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            System.out.println(e);
-//            System.exit(0);
-//        }
-//
-//    }
->>>>>>> e13682a7dcc640eefe3840095dca536a67fcd132
-
-    @Override
-    public int getRowCount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public int getRowCount() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }
