@@ -191,7 +191,7 @@ public class AllBooksTable extends AbstractTableModel{
 
     @Override
     public int getRowCount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return bookList.size();
     }
 
 }
