@@ -5,6 +5,9 @@
  */
 package libmansystem.Views;
 
+import javax.swing.JButton;
+import javax.swing.JMenuItem;
+
 /**
  *
  * @author Ibrahim-Abdullah
@@ -32,20 +35,20 @@ public class BooksAvailableTable extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Books = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        AddBook = new javax.swing.JMenuItem();
+        RemoveBook = new javax.swing.JMenuItem();
+        UpdateBook = new javax.swing.JMenuItem();
+        SearchBook = new javax.swing.JMenuItem();
+        BorrowBook = new javax.swing.JMenuItem();
+        ReturnBook = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        ViewAllBooks = new javax.swing.JMenuItem();
+        ViewBorrowedBooks = new javax.swing.JMenuItem();
+        ViewAvailableBooks = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
+        author = new javax.swing.JMenuItem();
+        title = new javax.swing.JMenuItem();
+        publisher = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Available Books");
@@ -68,75 +71,80 @@ public class BooksAvailableTable extends javax.swing.JFrame {
         Books.setMnemonic('B');
         Books.setText("Books");
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setMnemonic('A');
-        jMenuItem1.setText("Add Books");
-        Books.add(jMenuItem1);
+        AddBook.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        AddBook.setMnemonic('A');
+        AddBook.setText("Add Books");
+        Books.add(AddBook);
 
-        jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem6.setMnemonic('R');
-        jMenuItem6.setText("Remove Book");
-        Books.add(jMenuItem6);
+        RemoveBook.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
+        RemoveBook.setMnemonic('R');
+        RemoveBook.setText("Remove Book");
+        Books.add(RemoveBook);
 
-        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem3.setMnemonic('U');
-        jMenuItem3.setText("Update Book");
-        Books.add(jMenuItem3);
+        UpdateBook.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        UpdateBook.setMnemonic('U');
+        UpdateBook.setText("Update Book");
+        Books.add(UpdateBook);
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem2.setMnemonic('c');
-        jMenuItem2.setText("Search");
-        Books.add(jMenuItem2);
+        SearchBook.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        SearchBook.setMnemonic('c');
+        SearchBook.setText("Search");
+        Books.add(SearchBook);
 
-        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem4.setMnemonic('o');
-        jMenuItem4.setText("Borrow Book");
-        Books.add(jMenuItem4);
+        BorrowBook.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
+        BorrowBook.setMnemonic('o');
+        BorrowBook.setText("Borrow Book");
+        Books.add(BorrowBook);
 
-        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem5.setMnemonic('t');
-        jMenuItem5.setText("Return Book");
-        Books.add(jMenuItem5);
+        ReturnBook.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        ReturnBook.setMnemonic('t');
+        ReturnBook.setText("Return Book");
+        Books.add(ReturnBook);
 
         jMenuBar1.add(Books);
 
         jMenu2.setMnemonic('V');
         jMenu2.setText("View");
 
-        jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem7.setMnemonic('l');
-        jMenuItem7.setText("All Books");
-        jMenu2.add(jMenuItem7);
+        ViewAllBooks.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        ViewAllBooks.setMnemonic('l');
+        ViewAllBooks.setText("All Books");
+        ViewAllBooks.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewAllBooksActionPerformed(evt);
+            }
+        });
+        jMenu2.add(ViewAllBooks);
 
-        jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem8.setMnemonic('r');
-        jMenuItem8.setText("Borrow Books");
-        jMenu2.add(jMenuItem8);
+        ViewBorrowedBooks.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        ViewBorrowedBooks.setMnemonic('r');
+        ViewBorrowedBooks.setText("Borrow Books");
+        jMenu2.add(ViewBorrowedBooks);
 
-        jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem9.setMnemonic('v');
-        jMenuItem9.setText("Availble Books");
-        jMenu2.add(jMenuItem9);
+        ViewAvailableBooks.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        ViewAvailableBooks.setMnemonic('v');
+        ViewAvailableBooks.setText("Availble Books");
+        jMenu2.add(ViewAvailableBooks);
 
         jMenuBar1.add(jMenu2);
 
         jMenu1.setMnemonic('S');
         jMenu1.setText("Search By");
 
-        jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem10.setMnemonic('u');
-        jMenuItem10.setText("Author");
-        jMenu1.add(jMenuItem10);
+        author.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        author.setMnemonic('u');
+        author.setText("Author");
+        jMenu1.add(author);
 
-        jMenuItem11.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem11.setMnemonic('T');
-        jMenuItem11.setText("Title");
-        jMenu1.add(jMenuItem11);
+        title.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        title.setMnemonic('T');
+        title.setText("Title");
+        jMenu1.add(title);
 
-        jMenuItem12.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem12.setMnemonic('P');
-        jMenuItem12.setText("Publisher");
-        jMenu1.add(jMenuItem12);
+        publisher.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        publisher.setMnemonic('P');
+        publisher.setText("Publisher");
+        jMenu1.add(publisher);
 
         jMenuBar1.add(jMenu1);
 
@@ -167,6 +175,10 @@ public class BooksAvailableTable extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ViewAllBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewAllBooksActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ViewAllBooksActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,26 +214,74 @@ public class BooksAvailableTable extends javax.swing.JFrame {
             }
         });
     }
-
+    public JMenuItem getAddBooksMenuItem(){
+        return AddBook;
+    }
+    public JMenuItem getBorrowBooksMenuItem(){
+        return this.BorrowBook;
+    }
+    public JMenuItem getRemoveBookMenuItem(){
+        return this.RemoveBook;
+    }
+    public JMenuItem getReturnBookMenuItem(){
+        return this.ReturnBook;
+    }
+    public JMenuItem getSearchBookMenuItem(){
+        return this.SearchBook;
+    }
+    public JMenuItem getUpdateBookMenuItem(){
+        return this.UpdateBook;
+    }
+    public JMenuItem getAuthorMenuItem(){
+        return this.author;
+    }
+   public JMenuItem getTitleMenuItem(){
+        return this.title;
+    }
+    public JMenuItem getPublisherMenuItem(){
+        return this.publisher;
+    }
+    public JMenuItem getViewAvailableBooksMenuItem(){
+        return this.ViewAvailableBooks;
+    }
+    public JMenuItem getViewAllBooksMenuItem(){
+        return this.ViewAllBooks;
+    }
+    public JMenuItem getViewBorrwedBooksMenuItem(){
+        return this.ViewBorrowedBooks;
+    }
+    
+//    public JButton getAddButton(){
+//        return btnAddBook;
+//    }
+//    public JButton getEditButton(){
+//        return btnEditBook;
+//    }
+//    public JButton getDeleteButton(){
+//        return btnDeleteBook;
+//    }
+//    public JButton getSearchButton(){
+//        return btnSearchBook;
+//    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem AddBook;
     private javax.swing.JMenu Books;
+    private javax.swing.JMenuItem BorrowBook;
+    private javax.swing.JMenuItem RemoveBook;
+    private javax.swing.JMenuItem ReturnBook;
+    private javax.swing.JMenuItem SearchBook;
+    private javax.swing.JMenuItem UpdateBook;
+    private javax.swing.JMenuItem ViewAllBooks;
+    private javax.swing.JMenuItem ViewAvailableBooks;
+    private javax.swing.JMenuItem ViewBorrowedBooks;
+    private javax.swing.JMenuItem author;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JMenuItem publisher;
+    private javax.swing.JMenuItem title;
     // End of variables declaration//GEN-END:variables
 }

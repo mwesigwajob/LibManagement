@@ -5,18 +5,22 @@
  */
 package libmansystem.Views;
 
+import javax.swing.JButton;
 import javax.swing.JMenuItem;
+import javax.swing.JTable;
+import libmansystem.model.AllBooksTable;
 
 /**
  *
  * @author jobmwesigwa
  */
 public class Library extends javax.swing.JFrame {
-
+    AllBooksTable abm;
     /**
      * Creates new form Library
      */
     public Library() {
+        abm = new AllBooksTable();
         initComponents();
     }
 
@@ -32,6 +36,10 @@ public class Library extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        btnAddBook = new javax.swing.JButton();
+        btnEditBook = new javax.swing.JButton();
+        btnDeleteBook = new javax.swing.JButton();
+        btnSearchBook = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         booksMenu = new javax.swing.JMenu();
         AddBooks = new javax.swing.JMenuItem();
@@ -51,20 +59,23 @@ public class Library extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        jTable1.setModel(abm);
         jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setText("ALL BOOKS AVAILABLE");
+
+        btnAddBook.setText("Add");
+        btnAddBook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddBookActionPerformed(evt);
+            }
+        });
+
+        btnEditBook.setText("Edit");
+
+        btnDeleteBook.setText("Remove");
+
+        btnSearchBook.setText("Search");
 
         booksMenu.setMnemonic('B');
         booksMenu.setText("Books");
@@ -147,26 +158,47 @@ public class Library extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 697, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(270, 270, 270)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(134, 134, 134)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(55, 55, 55)
+                .addComponent(btnAddBook, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnEditBook, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77)
+                .addComponent(btnDeleteBook)
+                .addGap(87, 87, 87)
+                .addComponent(btnSearchBook)
+                .addGap(106, 106, 106))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 9, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAddBook)
+                    .addComponent(btnEditBook)
+                    .addComponent(btnDeleteBook)
+                    .addComponent(btnSearchBook))
+                .addGap(6, 6, 6))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAddBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddBookActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddBookActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,6 +271,19 @@ public class Library extends javax.swing.JFrame {
     public JMenuItem getViewBorrwedBooksMenuItem(){
         return this.viewBorrwedBooks;
     }
+    
+    public JButton getAddButton(){
+        return btnAddBook;
+    }
+    public JButton getEditButton(){
+        return btnEditBook;
+    }
+    public JButton getDeleteButton(){
+        return btnDeleteBook;
+    }
+    public JButton getSearchButton(){
+        return btnSearchBook;
+    }
         
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -250,6 +295,10 @@ public class Library extends javax.swing.JFrame {
     private javax.swing.JMenuItem UpdateBook;
     private javax.swing.JMenuItem author;
     private javax.swing.JMenu booksMenu;
+    private javax.swing.JButton btnAddBook;
+    private javax.swing.JButton btnDeleteBook;
+    private javax.swing.JButton btnEditBook;
+    private javax.swing.JButton btnSearchBook;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;

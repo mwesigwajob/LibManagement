@@ -50,8 +50,8 @@ public class AddBookController implements ActionListener{
             addBookview.dispose();
             Library allBooksFrame = new Library();
             AllBooksTable allBooksTable= new AllBooksTable();
-            ViewBooksController  viewBooks= new ViewBooksController(allBooksFrame,
-                    allBooksTable);//remeber to add the model
+            ViewBooksController  viewBooks= new ViewBooksController(allBooksTable);//remeber to add the model
+            viewBooks.setLibraryForm(allBooksFrame);
             viewBooks.control();
         }
         if (ae.getActionCommand().equalsIgnoreCase("Save")){  
@@ -125,7 +125,7 @@ public class AddBookController implements ActionListener{
                 //Notify user that record was not updated
                 //show the update form with values
             }
-        }
+        
         if(ae.getSource()==updateBookView.getExitButton()){
             //Set the visibility of the add form to false
             //make the allbooks frame visible
@@ -133,8 +133,8 @@ public class AddBookController implements ActionListener{
             updateBookView.dispose();
             Library allBooksFrame = new Library();
             AllBooksTable allBooksTable= new AllBooksTable();
-            ViewBooksController  viewBooks= new ViewBooksController(allBooksFrame,
-            allBooksTable);//remeber to add the model
+            ViewBooksController  viewBooks= new ViewBooksController(allBooksTable);//remeber to add the model
+            viewBooks.setLibraryForm(allBooksFrame);
             viewBooks.control();
         }
  }

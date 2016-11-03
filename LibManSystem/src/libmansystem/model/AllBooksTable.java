@@ -127,7 +127,9 @@ public class AllBooksTable extends AbstractTableModel{
         fireTableCellUpdated(row, col); //Updating the view
     }
     
-    public void addRecord(int id, String sub, String title, String author, String pub, int cpyrt, int edtn, int pgs,String isbn, int numBooks, int shelfNum) {
+    public void addRecord(int id, String sub, String title, String author, 
+            String pub, int cpyrt, int edtn, int pgs,String isbn, int numBooks, 
+            int shelfNum) {
         try {
             Connection con = null;
             Class.forName("com.mysql.jdbc.Driver").newInstance();
