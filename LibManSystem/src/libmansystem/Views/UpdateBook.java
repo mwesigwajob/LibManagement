@@ -45,7 +45,7 @@ public class UpdateBook extends javax.swing.JFrame {
         author = new javax.swing.JTextField();
         publisher = new javax.swing.JTextField();
         copyright = new javax.swing.JTextField();
-        btnEdit = new javax.swing.JButton();
+        btnUpdateEdit = new javax.swing.JButton();
         edition = new javax.swing.JTextField();
         ISBN = new javax.swing.JTextField();
         btnUpdate = new javax.swing.JButton();
@@ -93,7 +93,12 @@ public class UpdateBook extends javax.swing.JFrame {
             }
         });
 
-        btnEdit.setText("Edit");
+        btnUpdateEdit.setText("Retrive Record");
+        btnUpdateEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateEditActionPerformed(evt);
+            }
+        });
 
         btnUpdate.setText("Update ");
 
@@ -150,7 +155,7 @@ public class UpdateBook extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(shelfNum, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                            .addComponent(btnEdit)
+                            .addComponent(btnUpdateEdit)
                             .addComponent(title, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(author, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(subject, javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,7 +180,7 @@ public class UpdateBook extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bookID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
-                .addComponent(btnEdit)
+                .addComponent(btnUpdateEdit)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
@@ -235,6 +240,10 @@ public class UpdateBook extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_publisherActionPerformed
 
+    private void btnUpdateEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateEditActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateEditActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -269,8 +278,8 @@ public class UpdateBook extends javax.swing.JFrame {
             }
         });
     }
-    public JButton getEditButton(){
-        return btnEdit;
+    public JButton getUpdateEditButton(){
+        return btnUpdateEdit;
     }
     public JButton getUpdateButton(){
         return btnUpdate;
@@ -353,8 +362,8 @@ public class UpdateBook extends javax.swing.JFrame {
     private javax.swing.JTextField ISBN;
     private javax.swing.JTextField author;
     private javax.swing.JTextField bookID;
-    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton btnUpdateEdit;
     private javax.swing.JButton btnUpdateExit;
     private javax.swing.JTextField copyright;
     private javax.swing.JTextField edition;
