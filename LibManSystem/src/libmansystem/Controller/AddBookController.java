@@ -18,13 +18,13 @@ public class AddBookController implements ActionListener{
     
     AddBooks addBookview;
     UpdateBook updateBookView;
-    //StudentTableModel model;
+    AllBooksTable model;
     //TableFrame tf;
 
-    public AddBookController() {
+    public AddBookController(AllBooksTable model) {
         addBookview =null;
         updateBookView = null;
-        //model= studentTableModel;
+        this.model = model;
         //this.tf = tf;        
     }
     public void control(){
@@ -42,7 +42,7 @@ public class AddBookController implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent ae) {            
-        if (ae.getSource()==addBookview.getExitButton() )
+        if (ae.getSource()==addBookview.getExitButton())
         {
             //Set the visibility of the add form to false
             //make the allbooks frame visible
@@ -57,6 +57,7 @@ public class AddBookController implements ActionListener{
         if (ae.getActionCommand().equalsIgnoreCase("Save")){  
             
             //Validate all the input
+            String bookID = addBookview.getBookId();
             String subject = addBookview.getBookSubject();
             String title = addBookview.getBookTitle();
             String author = addBookview.getAuthor();
@@ -67,16 +68,14 @@ public class AddBookController implements ActionListener{
             String numPages = addBookview.getNumPages();
             String numCopies = addBookview.getNumCopies();
             String shelfNum = addBookview.getShelfNum();
-            
+            model.addRecord(Integer.parseInt(bookID), subject, title,author, 
+            publisher, Integer.parseInt(copyright), Integer.parseInt(edition),
+            Integer.parseInt(numPages),isbn, Integer.parseInt(numCopies), 
+            Integer.parseInt(shelfNum));
             //Pass a method in model to insert into database
         }
         
-        //Liesten for actions on the menu item
-        
-        if(ae.getActionCommand().equalsIgnoreCase("Edit")){
-            
-        }
-        if(ae.getActionCommand().equalsIgnoreCase("Edit")){
+        if(ae.getSource()==updateBookView.getBookID()){
             
             //Get the Book ID specified,
             //Search the table to find if there exist a book with the specified ID
@@ -86,15 +85,17 @@ public class AddBookController implements ActionListener{
             //specified book id.
             //Will implement this when the table model in the model
             //Is finished
-            
+            String bookID = updateBookView.getBookID();
+            model.searchByID(Integer.parseInt(bookID));
         }
         
-        if(ae.getActionCommand().equalsIgnoreCase("Update")){
+        if(ae.getSource()==updateBookView.getUpdateButton()){
             //Get the book ID and all other record
             //Validate all the input 
             //Notify user if there is an error or any invalide input 
             //using a message dialog box.
             //Otherwise,Update the record of the book in the database.
+            String bookID = updateBookView.getBookSubject();
             String subject = updateBookView.getBookSubject();
             String title = updateBookView.getBookTitle();
             String author = updateBookView.getAuthor();
@@ -105,15 +106,20 @@ public class AddBookController implements ActionListener{
             String numPages = updateBookView.getNumPages();
             String numCopies = updateBookView.getNumCopies();
             String shelfNum = updateBookView.getShelfNum();
-            boolean success = fieldValidation(subject,title,author,publisher,
-                    copyright,edition,isbn,numPages,numCopies,shelfNum);
-            if(success){
+            
+            //Update record in the database
+            model.updateRecord(Integer.parseInt(bookID), subject,title,
+            author,publisher,Integer.parseInt(copyright),Integer.parseInt(edition),Integer.parseInt(numPages),isbn, 
+            Integer.parseInt(numCopies),Integer.parseInt(shelfNum));
+//            boolean success = fieldValidation(subject,title,author,publisher,
+//                    copyright,edition,isbn,numPages,numCopies,shelfNum);
+//            if(success){
                 //Call a method in the model that will update record of the book 
                 //in in the database
                 //show a success message if the num of rows affected 
                 //is greater than or equal to 1
                 //show the update form with no values
-                resetField("updateBook");
+//                resetField("updateBook");
             }
             else{
                 //Notify user that record was not updated

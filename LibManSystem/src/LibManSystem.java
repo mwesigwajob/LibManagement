@@ -23,7 +23,7 @@ public class LibManSystem {
         AllBooksTable booksTableModel = new AllBooksTable();
         Library lb = new Library();
         ViewBooksController vbc = new ViewBooksController(lb,booksTableModel);
-        lb.setVisible(true);
+        vbc.control();
     }
     
 }

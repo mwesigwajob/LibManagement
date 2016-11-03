@@ -204,7 +204,7 @@ public class Library extends javax.swing.JFrame {
     }
 
     public JMenuItem getAddBooksMenuItem(){
-        return this.AddBooks;
+        return AddBooks;
     }
     public JMenuItem getBorrowBooksMenuItem(){
         return this.BorrowBook;
