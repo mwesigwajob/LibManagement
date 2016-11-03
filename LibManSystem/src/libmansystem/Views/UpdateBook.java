@@ -341,6 +341,14 @@ public class UpdateBook extends javax.swing.JFrame {
     public void setShelfNum(int shelfNum){
         this.shelfNum.setText(Integer.toString(shelfNum));
     }
+    
+    public String getBookID(){
+        return bookID.getText();
+    }
+    
+    public void setBookID(String bookid){
+        bookID.setText(bookid);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ISBN;
     private javax.swing.JTextField author;
