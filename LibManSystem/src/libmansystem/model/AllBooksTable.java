@@ -185,6 +185,63 @@ public class AllBooksTable extends AbstractTableModel{
         bookModel.fireTableDataChanged();
     }
     
+    public void searchByTitle(String title) {
+        for (int i = 0; i < bookList.size(); i++) {
+            if ((bookList.get(i).getTitle()).equals(title)) {
+                try {
+                    Connection con = null;
+                    Class.forName("com.mysql.jdbc.Driver").newInstance();
+                    con = java.sql.DriverManager.getConnection(
+                            "jdbc:mysql://localhost/studentdatabase?user=root&password=19D15FA1");
+                    PreparedStatement ps = con.prepareStatement("select * from Books where Title=?");
+                    ps.setString(1, title);
+                    System.out.println("Success: " + ps.execute());
+                } catch (Exception e) {
+                    System.out.println("Error " + e.toString());
+                    return;
+                }
+            }
+        }
+    }
+    
+    public void searchByAuthor(String author) {
+        for (int i = 0; i < bookList.size(); i++) {
+            if (bookList.get(i).getAuthor().equals(author)) {
+                try {
+                    Connection con = null;
+                    Class.forName("com.mysql.jdbc.Driver").newInstance();
+                    con = java.sql.DriverManager.getConnection(
+                            "jdbc:mysql://localhost/studentdatabase?user=root&password=19D15FA1");
+                    PreparedStatement ps = con.prepareStatement("select * from Books where Author=?");
+                    ps.setString(1, author);
+                    System.out.println("Success: " + ps.execute());
+                } catch (Exception e) {
+                    System.out.println("Error " + e.toString());
+                    return;
+                }
+            }
+        }
+    }
+    
+    public void searchByID(int stId) {
+        for (int i = 0; i < bookList.size(); i++) {
+            if ((bookList.get(i).getBookID()) == stId) {
+                try {
+                    Connection con = null;
+                    Class.forName("com.mysql.jdbc.Driver").newInstance();
+                    con = java.sql.DriverManager.getConnection(
+                            "jdbc:mysql://localhost/studentdatabase?user=root&password=19D15FA1");
+                    PreparedStatement ps = con.prepareStatement("select * from Books where StudentID=?");
+                    ps.setInt(1, stId);
+                    System.out.println("Success: " + ps.execute());
+                } catch (Exception e) {
+                    System.out.println("Error " + e.toString());
+                    return;
+                }
+            }
+        }
+    }
+    
     public void deleteRecord(int stId) {
         for (int i = 0; i < bookList.size(); i++) {
             if ((bookList.get(i).getBookID()) == stId) {
