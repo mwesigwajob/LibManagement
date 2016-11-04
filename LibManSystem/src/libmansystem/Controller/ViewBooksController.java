@@ -139,8 +139,11 @@ public class ViewBooksController implements ActionListener {
             RemoveBooks rb = new RemoveBooks();
             //call constructor for remove books
             //set the frame visibility to true
+            //SearchFrame sf = new SearchFrame();
             AllBooksTable abt = booksTable.getInstance();
             RemoveController rc = new RemoveController(rb,abt);
+            //rc.setRemoveBooks(rb);
+            rc.setLibraryForm(view);
             rc.control();
             rb.setVisible(true);
             
@@ -155,7 +158,7 @@ public class ViewBooksController implements ActionListener {
             ub.setVisible(true);
             
         }
-        if(e.getSource()== view.getSearchBookMenuItem()||e.getSource()==view.getSearchButton()){
+        if(e.getSource()== view.getSearchBookMenuItem()){
             //Get and display the the search book frame
             //call the search book contructor
             SearchFrame sf  = new SearchFrame();
@@ -164,6 +167,15 @@ public class ViewBooksController implements ActionListener {
             sbc.control();
             sf.setVisible(true);
             
+        }
+        if(e.getSource()==view.getSearchButton()){
+             EnterID eid = new EnterID();
+             SearchFrame sf  = new SearchFrame();
+             AllBooksTable abt = booksTable.getInstance();
+             SearchBookController sbc = new SearchBookController(sf,abt);
+             sbc.setEnterID(eid);
+             sbc.control();
+             eid.setVisible(true);
         }
         if(e.getSource()== view.getBorrowBooksMenuItem()){
             

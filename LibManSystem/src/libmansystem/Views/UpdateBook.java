@@ -341,14 +341,14 @@ public class UpdateBook extends javax.swing.JFrame {
     public void setISBN(String isbn){
         this.ISBN.setText(isbn);
     }
-    public void setNumPages(int numPages){
-        this.numPages.setText(Integer.toString(numPages));
+    public void setNumPages(String numPages){
+        this.numPages.setText(numPages);
     }
-    public void setNumCopies(int numCopies){
-        this.numCopies.setText(Integer.toString(numCopies));
+    public void setNumCopies(String numCopies){
+        this.numCopies.setText(numCopies);
     }
-    public void setShelfNum(int shelfNum){
-        this.shelfNum.setText(Integer.toString(shelfNum));
+    public void setShelfNum(String shelfNum){
+        this.shelfNum.setText(shelfNum);
     }
     
     public String getBookID(){

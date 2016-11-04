@@ -255,8 +255,12 @@ public class AllBooksTable extends AbstractTableModel{
         }
         return null;
     }
-    
-    public void deleteRecord(int stId) {
+    /**
+     * 
+     * @param stId 
+     */
+    public boolean deleteRecord(int stId) {
+        boolean success = true;
         for (int i = 0; i < bookList.size(); i++) {
             if ((bookList.get(i).getBookID()) == stId) {
                 try {
@@ -264,16 +268,22 @@ public class AllBooksTable extends AbstractTableModel{
                     Class.forName("com.mysql.jdbc.Driver").newInstance();
                     con = java.sql.DriverManager.getConnection(
                             "jdbc:mysql://localhost/Library?user=root&password=0030104018profib");
-                    PreparedStatement ps = con.prepareStatement("delete from Books where StudentID=?");
+                    PreparedStatement ps = con.prepareStatement("delete from Books where BookID=?");
                     ps.setInt(1, stId);
-                    System.out.println("Success: " + ps.execute());
+                    success = ps.execute();
+                    return success;
                 } catch (Exception e) {
-                    System.out.println("Error " + e.toString());
-                    return;
+                    JOptionPane.showMessageDialog(null,"Error" + e.toString());
+                    return false;
                 }
             }
         }
+//        if(success){
+//            JOptionPane.showMessageDialog(null,"Book ID does not exist");
+//        }
+        return true;
     }
+
     
     void fetchTableData() {
         try {

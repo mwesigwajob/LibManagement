@@ -101,9 +101,9 @@ public class AddBookController implements ActionListener{
                 updateBookView.setPublisher(bookRecord.getPublisher());
                 updateBookView.setBookSubject(bookRecord.getSubject());
                 updateBookView.setCopyright(Integer.toString(bookRecord.getCopyright()));
-                updateBookView.setNumCopies(bookRecord.getNumCopies());
-                updateBookView.setNumPages(bookRecord.getNumPages());
-                updateBookView.setShelfNum(bookRecord.getShelfNum());
+                updateBookView.setNumCopies(Integer.toString(bookRecord.getNumCopies()));
+                updateBookView.setNumPages(Integer.toString(bookRecord.getNumPages()));
+                updateBookView.setShelfNum(Integer.toString(bookRecord.getShelfNum()));
                 updateBookView.setEdition(Integer.toString(bookRecord.getEdition()));
                 updateBookView.setISBN(bookRecord.getISBN());
                 
@@ -147,7 +147,7 @@ public class AddBookController implements ActionListener{
                 //is greater than or equal to 1
                 //show the update form with no values
                 JOptionPane.showMessageDialog(null,"Book has been updated");
-               //resetField("updateBook");
+               resetField("updateBook");
             }
             else{
                 //Notify user that record was not updated
@@ -206,9 +206,9 @@ private void resetField(String frameName){
         updateBookView.setCopyright("");
         updateBookView.setEdition("");
         updateBookView.setISBN("");
-        updateBookView.setNumPages(0);
-        updateBookView.setNumCopies(0);
-        updateBookView.setShelfNum(0);
+        updateBookView.setNumPages("");
+        updateBookView.setNumCopies("");
+        updateBookView.setShelfNum("");
         
     }
 }
