@@ -7,44 +7,57 @@ package libmansystem.Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import libmansystem.Views.Library;
 import libmansystem.Views.RemoveBooks;
-import libmansystem.Views.SearchFrame;
 import libmansystem.model.AllBooksTable;
 
 /**
  *
  * @author Ibrahim-Abdullah
  */
-public class RemoveController implements ActionListener{
+public class RemoveController implements ActionListener {
     RemoveBooks rb;
     AllBooksTable abt;
-    
-    public RemoveController(RemoveBooks sf, AllBooksTable abt){
-        this.rb = sf;
+    Library fm;
+    public RemoveController(RemoveBooks rb,AllBooksTable abt ){
+        this.rb = rb;
         this.abt = abt;
+        this.fm = null;
     }
     
     public void control(){
         rb.getRemoveButton().addActionListener(this);
         rb.getCancelButton().addActionListener(this);
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()== rb.getRemoveButton()){
-            int bookID = rb.getBookID();
-            abt.deleteRecord(bookID);
-        }
+            String bookID = rb.getBookID();
+            try{
+                int id = Integer.parseInt(bookID);
+                boolean success = abt.deleteRecord(id);
+                if(!success)
+                    JOptionPane.showMessageDialog(null,"Book has been deleted");
+                else
+                    JOptionPane.showMessageDialog(null,"Book ID does not exist");
+            }catch(Exception ea){
+                JOptionPane.showMessageDialog(null,"Incorrect Book ID");
+            }
+    }
         if(e.getSource()== rb.getCancelButton()){
+            rb.setVisible(false);
             Library lib = new Library();
-            AllBooksTable abt = this.abt.getInstance();
-            ViewBooksController vbc = new ViewBooksController(abt);
+            AllBooksTable abts= new AllBooksTable();
+            ViewBooksController vbc = new ViewBooksController(abts);
             vbc.setLibraryForm(lib);
             vbc.control();
-            rb.setVisible(true);
+            this.fm.setVisible(false);
             lib.setVisible(true);
         }
-            
     }
+        public void setLibraryForm(Library fm){
+            this.fm= fm;
+        }
+    
 }
