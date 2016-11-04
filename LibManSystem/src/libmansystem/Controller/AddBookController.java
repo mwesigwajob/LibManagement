@@ -147,19 +147,21 @@ public class AddBookController implements ActionListener{
                 //is greater than or equal to 1
                 //show the update form with no values
                 JOptionPane.showMessageDialog(null,"Book has been updated");
-               resetField("updateBook");
+               //resetField("updateBook");
             }
             else{
                 //Notify user that record was not updated
                 //show the update form with values
                 JOptionPane.showMessageDialog(null,"Book could not be updated");
             }
+        }
         
         if(ae.getActionCommand().equals("Cancel")){
             //Set the visibility of the add form to false
             //make the allbooks frame visible
             //update the table of books shown in the table
             updateBookView.setVisible(false);
+            lib.setVisible(false);
             Library allBooksFrame = new Library();
             AllBooksTable allBooksTable= model.getInstance();
             ViewBooksController  viewBooks= new ViewBooksController(allBooksTable);//remeber to add the model
@@ -167,6 +169,8 @@ public class AddBookController implements ActionListener{
             viewBooks.control();
         }
  }
+    public void setLibraryView(Library lib){
+        this.lib = lib;
     }
     public void setAddBookView(AddBooks addBooks){
         this.addBookview = addBooks;

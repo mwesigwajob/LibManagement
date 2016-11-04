@@ -148,6 +148,7 @@ public class ViewBooksController implements ActionListener {
         if(e.getSource()== view.getUpdateBookMenuItem()||e.getSource()==view.getEditButton()){
             UpdateBook ub = new UpdateBook();
             AddBookController adbc = new AddBookController(booksTable);
+            adbc.setLibraryView(view);
             adbc.setUpdateBookView(ub);
             adbc.setAddBookView(null);
             adbc.control();
