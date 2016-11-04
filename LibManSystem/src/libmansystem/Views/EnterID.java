@@ -31,7 +31,7 @@ public class EnterID extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         bookID = new javax.swing.JTextField();
-        btnIDSearch = new javax.swing.JButton();
+        btnSearchBookID = new javax.swing.JButton();
         btnIDCancel = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -40,7 +40,7 @@ public class EnterID extends javax.swing.JFrame {
 
         jLabel1.setText("Enter Book ID");
 
-        btnIDSearch.setText("Search");
+        btnSearchBookID.setText("Search Book");
 
         btnIDCancel.setText("Cancel");
 
@@ -56,7 +56,7 @@ public class EnterID extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnIDSearch)
+                        .addComponent(btnSearchBookID)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnIDCancel))
                     .addComponent(bookID))
@@ -77,7 +77,7 @@ public class EnterID extends javax.swing.JFrame {
                     .addComponent(bookID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnIDSearch)
+                    .addComponent(btnSearchBookID)
                     .addComponent(btnIDCancel))
                 .addContainerGap(123, Short.MAX_VALUE))
         );
@@ -123,7 +123,7 @@ public class EnterID extends javax.swing.JFrame {
         return btnIDCancel;
     }
     public JButton getIDSearchButton(){
-        return btnIDSearch;
+        return btnSearchBookID;
     }
     public String getBookID(){
         return bookID.getText();
@@ -131,7 +131,7 @@ public class EnterID extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bookID;
     private javax.swing.JButton btnIDCancel;
-    private javax.swing.JButton btnIDSearch;
+    private javax.swing.JButton btnSearchBookID;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

@@ -12,7 +12,8 @@ import libmansystem.Views.*;
 import libmansystem.model.AllBooksTable;
 import libmansystem.model.Book;
 /**
- *
+ *This class controls and Listens to actions performed 
+ * on the add book and update book forms
  * @author Ibrahim-Abdullah
  */
 public class AddBookController implements ActionListener{
@@ -21,7 +22,10 @@ public class AddBookController implements ActionListener{
     UpdateBook updateBookView;
     AllBooksTable model;
     //TableFrame tf;
-
+    /**
+     * 
+     * @param model Custom code that extend AbstractTable Model
+     */
     public AddBookController(AllBooksTable model) {
         lib = null;
         addBookview =null;
@@ -29,6 +33,10 @@ public class AddBookController implements ActionListener{
         this.model = model;
         //this.tf = tf;        
     }
+    /**
+     *This method ActionListeners to component 
+     * controlled by the AddBookController
+     */
     public void control(){
         if(addBookview != null){
             addBookview.getSaveButtuon().addActionListener(this);
@@ -43,6 +51,9 @@ public class AddBookController implements ActionListener{
     }
 
     @Override
+    /**
+     *   @Override 
+     */
     public void actionPerformed(ActionEvent ae) {            
         if (ae.getActionCommand()=="Exit")
         {
@@ -76,7 +87,7 @@ public class AddBookController implements ActionListener{
             Integer.parseInt(shelfNum));
             //Pass a method in model to insert into database
             
-            if(success)
+            if(!success)
                 JOptionPane.showMessageDialog(null,"Book has been added to the database succesfully");
             else
                 JOptionPane.showMessageDialog(null,"Book could not be added to the database");

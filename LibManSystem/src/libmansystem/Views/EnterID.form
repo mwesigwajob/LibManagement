@@ -30,7 +30,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="btnIDSearch" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnSearchBookID" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnIDCancel" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -57,7 +57,7 @@
               </Group>
               <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnIDSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnSearchBookID" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnIDCancel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="123" max="32767" attributes="0"/>
@@ -73,9 +73,9 @@
     </Component>
     <Component class="javax.swing.JTextField" name="bookID">
     </Component>
-    <Component class="javax.swing.JButton" name="btnIDSearch">
+    <Component class="javax.swing.JButton" name="btnSearchBookID">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Search"/>
+        <Property name="text" type="java.lang.String" value="Search Book"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnIDCancel">

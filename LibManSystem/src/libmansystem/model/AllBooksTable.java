@@ -151,14 +151,15 @@ public class AllBooksTable extends AbstractTableModel{
             ps.setInt(10, numBooks);
             ps.setInt(11, shelfNum);
             success = ps.execute();
-            
+            //System.out.println(success);
+            return success;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"Error" + e.toString());
-            return false;
+            return true;
         }
         
-        bookModel.fireTableDataChanged();
-        return success;
+        //bookModel.fireTableDataChanged();
+        //return false;
     }
     
     public boolean updateRecord(int id, String sub, String title, String author, 
@@ -368,6 +369,10 @@ public class AllBooksTable extends AbstractTableModel{
     @Override
     public int getRowCount() {
        return bookList.size();
+    }
+    public void setBookList(Book b){
+        bookList.clear();
+        bookList.add(b);
     }
 
 }

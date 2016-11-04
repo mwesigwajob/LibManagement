@@ -7,13 +7,16 @@ package libmansystem.Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import libmansystem.Views.EnterID;
 import libmansystem.Views.Library;
+import libmansystem.Views.QueryResult;
 import libmansystem.Views.RemoveBooks;
 import libmansystem.Views.SearchFrame;
 import libmansystem.model.AllBooksTable;
 import libmansystem.model.Book;
+import libmansystem.model.ListModel;
 
 /**
  *
@@ -71,12 +74,17 @@ public class SearchBookController implements ActionListener{
                 abt.searchByAuthor(keyword);
             }
         }
-        if(e.getSource()==eid.getIDSearchButton()){
+        if(e.getSource()==eid.getIDSearchButton() || e.getActionCommand().equals("Search Book")){
             String bookID = eid.getBookID();
             try{
                 int id = Integer.parseInt(bookID);
                 Book bookRecord = abt.searchByID(id);
-                System.out.println(bookRecord.getAuthor());
+                //ArrayList<Book> boorArray = new ArrayList<Book>();
+                //boorArray.add(bookRecord);
+                //AllBooksTable abt = new AllBooksTable();
+                this.abt.setBookList(bookRecord);
+                QueryResult qr = new QueryResult();
+                qr.setVisible(true);
             }
             catch(Exception ea){
                 JOptionPane.showMessageDialog(null,"Incorrect Book ID");
