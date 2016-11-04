@@ -40,9 +40,9 @@ public class EnterID extends javax.swing.JFrame {
 
         jLabel1.setText("Enter Book ID");
 
-        btnIDSearch.setText("Search");
+        btnIDSearch.setText("Search Book");
 
-        btnIDCancel.setText("Cancel");
+        btnIDCancel.setText("Cancel Search");
 
         jLabel2.setText("SEARCH BOOK BY ID");
 
@@ -51,15 +51,18 @@ public class EnterID extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bookID))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(123, 123, 123)
                         .addComponent(btnIDSearch)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnIDCancel))
-                    .addComponent(bookID))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnIDCancel)
+                        .addGap(0, 16, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

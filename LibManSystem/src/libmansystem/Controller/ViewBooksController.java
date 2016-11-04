@@ -193,10 +193,18 @@ public class ViewBooksController implements ActionListener {
             
         }
         if(e.getSource()== view.getAuthorMenuItem()){
-            
+            SearchFrame sf  = new SearchFrame();
+            AllBooksTable abt = booksTable.getInstance();
+            SearchBookController sbc = new SearchBookController(sf,abt);
+            sbc.control();
+            sf.setVisible(true);
         }
         if(e.getSource()== view.getTitleMenuItem()){
-            
+            SearchFrame sf  = new SearchFrame();
+            AllBooksTable abt = booksTable.getInstance();
+            SearchBookController sbc = new SearchBookController(sf,abt);
+            sbc.control();
+            sf.setVisible(true);
         }
         if(e.getSource()== view.getPublisherMenuItem()){
             

@@ -94,7 +94,7 @@ public class AddBookController implements ActionListener{
             //Is finished
             String bookID = updateBookView.getBookID();
             try{
-            Book bookRecord = model.searchByID(Integer.parseInt(bookID));
+            Book bookRecord = model.searchByIDOne(Integer.parseInt(bookID));
             if(bookRecord != null){
                 updateBookView.setAuthor(bookRecord.getAuthor());
                 updateBookView.setBookTitle(bookRecord.getTitle());

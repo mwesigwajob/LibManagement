@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import libmansystem.Views.EnterID;
 import libmansystem.Views.Library;
+import libmansystem.Views.QueryResult;
 import libmansystem.Views.RemoveBooks;
 import libmansystem.Views.SearchFrame;
 import libmansystem.model.AllBooksTable;
@@ -24,11 +25,13 @@ public class SearchBookController implements ActionListener{
     AllBooksTable abt;
     EnterID eid;
     RemoveBooks rb;
+    QueryResult qr;
     public SearchBookController(SearchFrame sf, AllBooksTable abt){
         this.sf = sf;
         this.abt = abt;
         eid = null;
         this.rb = null;
+        this.qr = null;
     }
     
     public void control(){
@@ -42,6 +45,12 @@ public class SearchBookController implements ActionListener{
             rb.getRemoveButton().addActionListener(this);
             rb.getCancelButton().addActionListener(this);
         }
+        if(this.qr != null){
+            qr.getbtnExit().addActionListener(this);
+        }
+    }
+    public void setQueryResult(QueryResult qr){
+        this.qr = qr;
     }
     public void setEnterID(EnterID eid){
         this.eid = eid;
@@ -62,6 +71,10 @@ public class SearchBookController implements ActionListener{
             
             if(criteria.equalsIgnoreCase("Book Title")){
                 abt.searchByTitle(keyword);
+                QueryResult qr = new QueryResult();
+                setQueryResult(qr);
+                control();
+                qr.setVisible(true);
             }
             else if(criteria.equalsIgnoreCase("Publisher")){
                 
@@ -69,34 +82,38 @@ public class SearchBookController implements ActionListener{
             else{
                 //search using Author
                 abt.searchByAuthor(keyword);
+                QueryResult qr = new QueryResult();
+                setQueryResult(qr);
+                control();
+                qr.setVisible(true);
             }
         }
+        
         if(e.getSource()==eid.getIDSearchButton()){
-            String bookID = eid.getBookID();
+            String bookID = rb.getBookID();
             try{
                 int id = Integer.parseInt(bookID);
-                Book bookRecord = abt.searchByID(id);
-                System.out.println(bookRecord.getAuthor());
-            }
-            catch(Exception ea){
+                abt.searchByID(id);
+                QueryResult qr = new QueryResult();
+                setQueryResult(qr);
+                control();
+                qr.setVisible(true);
+            }catch(Exception aee){
                 JOptionPane.showMessageDialog(null,"Incorrect Book ID");
             }
         }
-        if(e.getSource()== eid.getIDCancelButton()){
-            eid.setVisible(false);
-        }
         
-//        if(e.getSource()== rb.getRemoveButton()){
-//            String bookID = rb.getBookID();
-//            try{
-//                int id = Integer.parseInt(bookID);
-//                abt.deleteRecord(id);
-//            }catch(Exception aee){
-//                JOptionPane.showMessageDialog(null,"Incorrect Book ID");
-//            }
-//        }
-//        if(e.getSource()== rb.getCancelButton()){
-//            rb.setVisible(false);
-//        }
+        if(e.getSource()== rb.getCancelButton()){
+            rb.setVisible(false);
+        }
+           if(e.getSource()==qr.getbtnExit()){
+            Library lib = new Library();
+            AllBooksTable abt = new AllBooksTable();
+            ViewBooksController vbc = new ViewBooksController(abt);
+            vbc.setLibraryForm(lib);
+            vbc.control();
+            qr.setVisible(false);
+            lib.setVisible(true);
+        }
     }
 }
