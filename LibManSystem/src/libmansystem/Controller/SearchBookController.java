@@ -76,14 +76,17 @@ public class SearchBookController implements ActionListener{
             
             if(criteria.equalsIgnoreCase("Book Title")){
                 ArrayList<Book> bk = abt.searchByTitle(keyword);
-                sf.getSearchResults.setText("");
-        for ( Map.Entry<String,StudentManager> myStudent : myStudents.entrySet()) {
-            allStudents.append(myStudent.toString());
-            
-      } 
+                sf.getSearchResults().setText("");
+        for (int i = 0; i < bk.size(); i++) {
+			sf.getSearchResults().append(bk.toString());
+		}
             }
             else if(criteria.equalsIgnoreCase("Publisher")){
-                
+              ArrayList<Book> bk = abt.searchByTitle(keyword);
+                sf.getSearchResults().setText("");
+        for (int i = 0; i < bk.size(); i++) {
+			sf.getSearchResults().append(bk.toString());
+		}  
             }
             else{
                 //search using Author
