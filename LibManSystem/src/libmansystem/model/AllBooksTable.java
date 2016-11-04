@@ -206,9 +206,9 @@ public class AllBooksTable extends AbstractTableModel{
                     Class.forName("com.mysql.jdbc.Driver").newInstance();
                     con = java.sql.DriverManager.getConnection(
                             "jdbc:mysql://localhost/Library?user=root&password=0030104018profib");
-                    PreparedStatement ps = con.prepareStatement("select * from Books where Title=?");
-                    ps.setString(1, title);
-                    ResultSet rs = ps.executeQuery();
+                    Statement ps = con.createStatement();
+                    
+                    ResultSet rs = ps.executeQuery("select * from Books where Title=title");
                     while (rs.next()) {
                 Book st = new Book();
                 st.setBookID(Integer.valueOf(rs.getString(1)));
@@ -225,7 +225,7 @@ public class AllBooksTable extends AbstractTableModel{
 
                 tempBook.add(st);
             }
-                    System.out.println("Success: " + ps.execute());
+                    System.out.println("Success: " + ps.execute("select * from Books where Title=title"));
                 } catch (Exception e) {
                     System.out.println("Error " + e.toString());
                 }
@@ -243,9 +243,9 @@ public class AllBooksTable extends AbstractTableModel{
                     Class.forName("com.mysql.jdbc.Driver").newInstance();
                     con = java.sql.DriverManager.getConnection(
                             "jdbc:mysql://localhost/Library?user=root&password=0030104018profib");
-                    PreparedStatement ps = con.prepareStatement("select * from Books where Author=?");
-                    ps.setString(1, author);
-                    ResultSet rs = ps.executeQuery();
+                    
+                    Statement ps = con.createStatement();
+                    ResultSet rs = ps.executeQuery("select * from Books where Title=title");
                     while (rs.next()) {
                 Book st = new Book();
                 st.setBookID(Integer.valueOf(rs.getString(1)));
@@ -262,7 +262,7 @@ public class AllBooksTable extends AbstractTableModel{
 
                 tempBook.add(st);
             }
-                    System.out.println("Success: " + ps.execute());
+                    System.out.println("Success: " + ps.execute("select * from Books where Title=title"));
                 } catch (Exception e) {
                     System.out.println("Error " + e.toString());
                 }
