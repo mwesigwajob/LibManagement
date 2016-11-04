@@ -196,7 +196,9 @@ public class AllBooksTable extends AbstractTableModel{
         return success;
     }
     
-    public void searchByTitle(String title) {
+    public ArrayList<Book> searchByTitle(String title) {
+        ArrayList<Book> tempBook = null;
+        
         for (int i = 0; i < bookList.size(); i++) {
             if ((bookList.get(i).getTitle()).equals(title)) {
                 try {
@@ -206,16 +208,34 @@ public class AllBooksTable extends AbstractTableModel{
                             "jdbc:mysql://localhost/Library?user=root&password=0030104018profib");
                     PreparedStatement ps = con.prepareStatement("select * from Books where Title=?");
                     ps.setString(1, title);
+                    ResultSet rs = ps.executeQuery();
+                    while (rs.next()) {
+                Book st = new Book();
+                st.setBookID(Integer.valueOf(rs.getString(1)));
+                st.setSubject(rs.getString(2));
+                st.setTitle(rs.getString(3));
+                st.setAuthor(rs.getString(4));
+                st.setPublisher(rs.getString(5));
+                st.setCopyright(Integer.valueOf(rs.getString(6)));
+                st.setEdition(Integer.valueOf(rs.getString(7)));
+                st.setNumPages(Integer.valueOf(rs.getString(8)));
+                st.setISBN(rs.getString(9));
+                st.setNumCopies(Integer.valueOf(rs.getString(10)));
+                st.setShelfNum(Integer.valueOf(rs.getString(11)));
+
+                tempBook.add(st);
+            }
                     System.out.println("Success: " + ps.execute());
                 } catch (Exception e) {
                     System.out.println("Error " + e.toString());
-                    return;
                 }
             }
         }
+        return tempBook;
     }
     
-    public void searchByAuthor(String author) {
+    public ArrayList<Book> searchByAuthor(String author) {
+        ArrayList<Book> tempBook = null;
         for (int i = 0; i < bookList.size(); i++) {
             if (bookList.get(i).getAuthor().equals(author)) {
                 try {
@@ -225,13 +245,30 @@ public class AllBooksTable extends AbstractTableModel{
                             "jdbc:mysql://localhost/Library?user=root&password=0030104018profib");
                     PreparedStatement ps = con.prepareStatement("select * from Books where Author=?");
                     ps.setString(1, author);
+                    ResultSet rs = ps.executeQuery();
+                    while (rs.next()) {
+                Book st = new Book();
+                st.setBookID(Integer.valueOf(rs.getString(1)));
+                st.setSubject(rs.getString(2));
+                st.setTitle(rs.getString(3));
+                st.setAuthor(rs.getString(4));
+                st.setPublisher(rs.getString(5));
+                st.setCopyright(Integer.valueOf(rs.getString(6)));
+                st.setEdition(Integer.valueOf(rs.getString(7)));
+                st.setNumPages(Integer.valueOf(rs.getString(8)));
+                st.setISBN(rs.getString(9));
+                st.setNumCopies(Integer.valueOf(rs.getString(10)));
+                st.setShelfNum(Integer.valueOf(rs.getString(11)));
+
+                tempBook.add(st);
+            }
                     System.out.println("Success: " + ps.execute());
                 } catch (Exception e) {
                     System.out.println("Error " + e.toString());
-                    return;
                 }
             }
         }
+        return tempBook;
     }
     
     public Book searchByID(int stId) {
@@ -296,20 +333,20 @@ public class AllBooksTable extends AbstractTableModel{
             //get actual row data
 
             while (rs.next()) {
-                Book st = new Book();
-                st.setBookID(Integer.valueOf(rs.getString(1)));
-                st.setSubject(rs.getString(2));
-                st.setTitle(rs.getString(3));
-                st.setAuthor(rs.getString(4));
-                st.setPublisher(rs.getString(5));
-                st.setCopyright(Integer.valueOf(rs.getString(6)));
-                st.setEdition(Integer.valueOf(rs.getString(7)));
-                st.setNumPages(Integer.valueOf(rs.getString(8)));
-                st.setISBN(rs.getString(9));
-                st.setNumCopies(Integer.valueOf(rs.getString(10)));
-                st.setShelfNum(Integer.valueOf(rs.getString(11)));
+                Book bk = new Book();
+                bk.setBookID(Integer.valueOf(rs.getString(1)));
+                bk.setSubject(rs.getString(2));
+                bk.setTitle(rs.getString(3));
+                bk.setAuthor(rs.getString(4));
+                bk.setPublisher(rs.getString(5));
+                bk.setCopyright(Integer.valueOf(rs.getString(6)));
+                bk.setEdition(Integer.valueOf(rs.getString(7)));
+                bk.setNumPages(Integer.valueOf(rs.getString(8)));
+                bk.setISBN(rs.getString(9));
+                bk.setNumCopies(Integer.valueOf(rs.getString(10)));
+                bk.setShelfNum(Integer.valueOf(rs.getString(11)));
 
-                bookList.add(st);
+                bookList.add(bk);
             }
         } catch (Exception e) {
             e.printStackTrace();
