@@ -6,6 +6,7 @@
 package libmansystem.Views;
 
 import javax.swing.JButton;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -37,7 +38,7 @@ public class SearchFrame extends javax.swing.JFrame {
         btnSearch = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        searchResults = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Search");
@@ -59,9 +60,9 @@ public class SearchFrame extends javax.swing.JFrame {
 
         btnCancel.setText("Cancel");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        searchResults.setColumns(20);
+        searchResults.setRows(5);
+        jScrollPane1.setViewportView(searchResults);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -166,6 +167,13 @@ public String getSearchCriteria(){
 public String getKeyword(){
     return keyword.getText();
 }
+
+    public JTextArea getSearchResults() {
+        return searchResults;
+    }
+
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnSearch;
@@ -173,8 +181,8 @@ public String getKeyword(){
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField keyword;
     private javax.swing.JComboBox<String> searchCriteriaCmb;
+    private javax.swing.JTextArea searchResults;
     // End of variables declaration//GEN-END:variables
 }

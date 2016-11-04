@@ -27,6 +27,8 @@ public class SearchBookController implements ActionListener{
     AllBooksTable abt;
     EnterID eid;
     RemoveBooks rb;
+    Book bk;
+    
     public SearchBookController(SearchFrame sf, AllBooksTable abt){
         this.sf = sf;
         this.abt = abt;
@@ -73,7 +75,12 @@ public class SearchBookController implements ActionListener{
             String keyword = sf.getKeyword();
             
             if(criteria.equalsIgnoreCase("Book Title")){
-                abt.searchByTitle(keyword);
+                ArrayList<Book> bk = abt.searchByTitle(keyword);
+                sf.getSearchResults.setText("");
+        for ( Map.Entry<String,StudentManager> myStudent : myStudents.entrySet()) {
+            allStudents.append(myStudent.toString());
+            
+      } 
             }
             else if(criteria.equalsIgnoreCase("Publisher")){
                 
