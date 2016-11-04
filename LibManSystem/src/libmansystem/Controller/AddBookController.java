@@ -36,13 +36,13 @@ public class AddBookController implements ActionListener{
         if(updateBookView != null){
             updateBookView.getEditButton().addActionListener(this);
             updateBookView.getUpdateButton().addActionListener(this);
-            updateBookView.getExitButton().addActionListener(this);
+            updateBookView.getUpdateExitButton().addActionListener(this);
         }
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {            
-        if (ae.getSource()==addBookview.getExitButton())
+        if (ae.getActionCommand()=="Exit")
         {
             //Set the visibility of the add form to false
             //make the allbooks frame visible
@@ -126,13 +126,13 @@ public class AddBookController implements ActionListener{
                 //show the update form with values
             }
         
-        if(ae.getSource()==updateBookView.getExitButton()){
+        if(ae.getActionCommand().equals("Cancel")){
             //Set the visibility of the add form to false
             //make the allbooks frame visible
             //update the table of books shown in the table
-            updateBookView.dispose();
+            updateBookView.setVisible(false);
             Library allBooksFrame = new Library();
-            AllBooksTable allBooksTable= new AllBooksTable();
+            AllBooksTable allBooksTable= model.getInstance();
             ViewBooksController  viewBooks= new ViewBooksController(allBooksTable);//remeber to add the model
             viewBooks.setLibraryForm(allBooksFrame);
             viewBooks.control();

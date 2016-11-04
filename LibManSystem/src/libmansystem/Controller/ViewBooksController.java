@@ -134,17 +134,22 @@ public class ViewBooksController implements ActionListener {
             adb.setVisible(true);
         }
         
-        if(e.getSource()== view.getRemoveBookMenuItem()){
+        if(e.getSource()== view.getRemoveBookMenuItem()|| 
+                e.getSource()== view.getDeleteButton()){
             RemoveBooks rb = new RemoveBooks();
             //call constructor for remove books
             //set the frame visibility to true
+            AllBooksTable abt = booksTable.getInstance();
+            RemoveController rc = new RemoveController(rb,abt);
+            rc.control();
+            rb.setVisible(true);
             
         }
-        if(e.getSource()== view.getUpdateBookMenuItem()||e.getSource()==view.getEditButton()||
-                e.getSource()== availableBooks.getUpdateBookMenuItem()){
+        if(e.getSource()== view.getUpdateBookMenuItem()||e.getSource()==view.getEditButton()){
             UpdateBook ub = new UpdateBook();
             AddBookController adbc = new AddBookController(booksTable);
             adbc.setUpdateBookView(ub);
+            adbc.setAddBookView(null);
             adbc.control();
             ub.setVisible(true);
             

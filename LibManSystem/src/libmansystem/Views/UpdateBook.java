@@ -49,7 +49,7 @@ public class UpdateBook extends javax.swing.JFrame {
         edition = new javax.swing.JTextField();
         ISBN = new javax.swing.JTextField();
         btnUpdate = new javax.swing.JButton();
-        btnExit = new javax.swing.JButton();
+        btnUpdateExit = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         numPages = new javax.swing.JTextField();
@@ -97,7 +97,7 @@ public class UpdateBook extends javax.swing.JFrame {
 
         btnUpdate.setText("Update ");
 
-        btnExit.setText("Exit");
+        btnUpdateExit.setText("Cancel");
 
         jLabel12.setText("The name of Publisher");
 
@@ -145,7 +145,7 @@ public class UpdateBook extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnUpdate)
                         .addGap(35, 35, 35)
-                        .addComponent(btnExit)
+                        .addComponent(btnUpdateExit)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -221,7 +221,7 @@ public class UpdateBook extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdate)
-                    .addComponent(btnExit)))
+                    .addComponent(btnUpdateExit)))
         );
 
         pack();
@@ -276,8 +276,8 @@ public class UpdateBook extends javax.swing.JFrame {
         return btnUpdate;
     }
     
-    public JButton getExitButton(){
-        return btnExit;
+    public JButton getUpdateExitButton(){
+        return btnUpdateExit;
     }
     public String getBookSubject(){  //another fxn getName() exists!
         return subject.getText();
@@ -354,8 +354,8 @@ public class UpdateBook extends javax.swing.JFrame {
     private javax.swing.JTextField author;
     private javax.swing.JTextField bookID;
     private javax.swing.JButton btnEdit;
-    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton btnUpdateExit;
     private javax.swing.JTextField copyright;
     private javax.swing.JTextField edition;
     private javax.swing.JLabel jLabel1;
