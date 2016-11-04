@@ -16,7 +16,7 @@ import libmansystem.Views.RemoveBooks;
 import libmansystem.Views.SearchFrame;
 import libmansystem.model.AllBooksTable;
 import libmansystem.model.Book;
-import libmansystem.model.ListModel;
+//import libmansystem.model.ListModel;
 
 /**
  *
@@ -34,6 +34,9 @@ public class SearchBookController implements ActionListener{
         this.rb = null;
     }
     
+    /**
+     * 
+     */
     public void control(){
         sf.getCancelButton().addActionListener(this);
         sf.getSearchButton().addActionListener(this);
@@ -53,6 +56,12 @@ public class SearchBookController implements ActionListener{
     public void setRemoveBooks(RemoveBooks rb){
         this.rb = rb;
     }
+    
+    /**
+     * Method searches for all books in the database
+     * that have the name of the author specified by the user.
+     * @param e takes in the search by author action from the menu  
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()== sf.getCancelButton()){

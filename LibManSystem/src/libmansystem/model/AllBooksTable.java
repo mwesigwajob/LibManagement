@@ -151,10 +151,7 @@ public class AllBooksTable extends AbstractTableModel{
             ps.setInt(10, numBooks);
             ps.setInt(11, shelfNum);
             success = ps.execute();
-<<<<<<< HEAD
             //System.out.println(success);
-=======
->>>>>>> a273f72acc438e033c49809a1b79411836dde778
             return success;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"Error" + e.toString());
@@ -162,11 +159,8 @@ public class AllBooksTable extends AbstractTableModel{
         }
         
         //bookModel.fireTableDataChanged();
-<<<<<<< HEAD
         //return false;
-=======
         //return success;
->>>>>>> a273f72acc438e033c49809a1b79411836dde778
     }
     
     public boolean updateRecord(int id, String sub, String title, String author, 
