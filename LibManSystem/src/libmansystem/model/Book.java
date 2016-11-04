@@ -22,6 +22,15 @@ public class Book {
     this.publisher = null;
     }
     
+    @Override
+    public String toString() {
+        return "Returned Book " + "\n\nBookID= " + bookID + "\n Subject= " + subject
+                + "\n Copyright=" + copyright + "\n ISBN=" + isbn
+                + "\n Title=" + title + "\n Page number=" + numPages + 
+                "\n Number of Copies=" + numCopies + "\n Author=" + author + "\n Shelf Number= " + shelfNum
+                + "\n Edition=" + edition + "\n Publisher=" + publisher ;
+  }
+    
     //Constructor with parameter
     public Book(int ID, String sub, String title, String au, String pub, int copy,
             String is, int pages, int copies,int shelfNum, int edition){

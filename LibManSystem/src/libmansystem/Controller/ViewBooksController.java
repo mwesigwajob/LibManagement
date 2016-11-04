@@ -61,6 +61,7 @@ public class ViewBooksController implements ActionListener {
     public void control(){
         
         if(view != null){
+        view.getBtnMainExit().addActionListener(this);
         view.getAddBooksMenuItem().addActionListener(this);
         view.getRemoveBookMenuItem().addActionListener(this);
         view.getUpdateBookMenuItem().addActionListener(this);
@@ -157,6 +158,9 @@ public class ViewBooksController implements ActionListener {
             adbc.control();
             ub.setVisible(true);
             
+        }
+        if(e.getSource()== view.getBtnMainExit()){
+            System.exit(0);
         }
         if(e.getSource()== view.getSearchBookMenuItem()){
             //Get and display the the search book frame

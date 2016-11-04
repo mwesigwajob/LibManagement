@@ -176,7 +176,9 @@
               <Component id="btnDeleteBook" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
               <Component id="btnSearchBook" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="385" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <Component id="btnMainExit" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="277" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="457" max="-2" attributes="0"/>
@@ -198,6 +200,7 @@
                   <Component id="btnEditBook" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnDeleteBook" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnSearchBook" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnMainExit" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
           </Group>
@@ -248,6 +251,11 @@
     <Component class="javax.swing.JButton" name="btnSearchBook">
       <Properties>
         <Property name="text" type="java.lang.String" value="Search"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnMainExit">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Exit"/>
       </Properties>
     </Component>
   </SubComponents>

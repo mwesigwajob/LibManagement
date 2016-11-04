@@ -77,6 +77,8 @@ public class SearchBookController implements ActionListener{
             if(criteria.equalsIgnoreCase("Book Title")){
                 ArrayList<Book> bk = abt.searchByTitle(keyword);
                 sf.getSearchResults().setText("");
+                if(bk == null)
+                    sf.getSearchResults().setText("jdjdjdjdjd");
         for (int i = 0; i < bk.size(); i++) {
 			sf.getSearchResults().append(bk.toString());
 		}
@@ -98,6 +100,10 @@ public class SearchBookController implements ActionListener{
             try{
                 int id = Integer.parseInt(bookID);
                 Book bookRecord = abt.searchByID(id);
+                sf.setVisible(true);
+                sf.getSearchResults().setText(bookRecord.toString());
+                
+               // sf.getSearchResults().setText("77yyy");
                 //ArrayList<Book> boorArray = new ArrayList<Book>();
                 //boorArray.add(bookRecord);
                 //AllBooksTable abt = new AllBooksTable();

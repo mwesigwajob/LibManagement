@@ -38,6 +38,7 @@ public class Library extends javax.swing.JFrame {
         btnEditBook = new javax.swing.JButton();
         btnDeleteBook = new javax.swing.JButton();
         btnSearchBook = new javax.swing.JButton();
+        btnMainExit = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         booksMenu = new javax.swing.JMenu();
         AddBooks = new javax.swing.JMenuItem();
@@ -76,6 +77,8 @@ public class Library extends javax.swing.JFrame {
         btnDeleteBook.setText("Remove");
 
         btnSearchBook.setText("Search");
+
+        btnMainExit.setText("Exit");
 
         booksMenu.setMnemonic('B');
         booksMenu.setText("Books");
@@ -170,7 +173,9 @@ public class Library extends javax.swing.JFrame {
                 .addComponent(btnDeleteBook)
                 .addGap(42, 42, 42)
                 .addComponent(btnSearchBook)
-                .addGap(385, 385, 385))
+                .addGap(35, 35, 35)
+                .addComponent(btnMainExit)
+                .addGap(277, 277, 277))
             .addGroup(layout.createSequentialGroup()
                 .addGap(457, 457, 457)
                 .addComponent(jLabel1)
@@ -188,7 +193,8 @@ public class Library extends javax.swing.JFrame {
                     .addComponent(btnAddBook)
                     .addComponent(btnEditBook)
                     .addComponent(btnDeleteBook)
-                    .addComponent(btnSearchBook))
+                    .addComponent(btnSearchBook)
+                    .addComponent(btnMainExit))
                 .addGap(6, 6, 6))
         );
 
@@ -283,7 +289,11 @@ public class Library extends javax.swing.JFrame {
     public JButton getSearchButton(){
         return btnSearchBook;
     }
-        
+
+    public JButton getBtnMainExit() {
+        return btnMainExit;
+    }
+       
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem AddBooks;
@@ -297,6 +307,7 @@ public class Library extends javax.swing.JFrame {
     private javax.swing.JButton btnAddBook;
     private javax.swing.JButton btnDeleteBook;
     private javax.swing.JButton btnEditBook;
+    private javax.swing.JButton btnMainExit;
     private javax.swing.JButton btnSearchBook;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;

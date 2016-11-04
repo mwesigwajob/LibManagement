@@ -79,7 +79,7 @@ public class EnterID extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSearchBookID)
                     .addComponent(btnIDCancel))
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();
