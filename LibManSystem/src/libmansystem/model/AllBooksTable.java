@@ -323,7 +323,11 @@ public class AllBooksTable extends AbstractTableModel{
         return true;
     }
 
-    
+    /**
+     * Method connects to the Database
+     * picks all the column headers and puts them in the abstract table
+     * fetches data from the database row by row and stores in the arrayList.
+     */
     void fetchTableData() {
         try {
             Connection conn = null;
@@ -366,11 +370,20 @@ public class AllBooksTable extends AbstractTableModel{
             System.exit(0);
         }
     }
-
+    
+    /**
+     * 
+     * @return the number of rows in the Table
+     */
     @Override
     public int getRowCount() {
        return bookList.size();
     }
+    
+    /**
+     * Clears the book list and adds the new book
+     * @param b the new book to be added
+     */
     public void setBookList(Book b){
         bookList.clear();
         bookList.add(b);
