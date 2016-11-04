@@ -245,7 +245,7 @@ public class AllBooksTable extends AbstractTableModel{
                             "jdbc:mysql://localhost/Library?user=root&password=0030104018profib");
                     
                     Statement ps = con.createStatement();
-                    ResultSet rs = ps.executeQuery("select * from Books where Title=title");
+                    ResultSet rs = ps.executeQuery("select * from Books where Author=author");
                     while (rs.next()) {
                 Book st = new Book();
                 st.setBookID(Integer.valueOf(rs.getString(1)));
