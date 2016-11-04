@@ -94,17 +94,17 @@ public class SearchBookController implements ActionListener{
             eid.setVisible(false);
         }
         
-//        if(e.getSource()== rb.getRemoveButton()){
-//            String bookID = rb.getBookID();
-//            try{
-//                int id = Integer.parseInt(bookID);
-//                abt.deleteRecord(id);
-//            }catch(Exception aee){
-//                JOptionPane.showMessageDialog(null,"Incorrect Book ID");
-//            }
-//        }
-//        if(e.getSource()== rb.getCancelButton()){
-//            rb.setVisible(false);
-//        }
+        if(e.getSource()== rb.getRemoveButton()){
+            String bookID = rb.getBookID();
+            try{
+                int id = Integer.parseInt(bookID);
+                abt.deleteRecord(id);
+            }catch(Exception aee){
+                JOptionPane.showMessageDialog(null,"Incorrect Book ID");
+            }
+        }
+        if(e.getSource()== rb.getCancelButton()){
+            rb.setVisible(false);
+        }
     }
 }
