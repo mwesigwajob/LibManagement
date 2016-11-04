@@ -7,7 +7,6 @@ package libmansystem.Views;
 
 import javax.swing.JButton;
 import javax.swing.JMenuItem;
-import javax.swing.JTable;
 import libmansystem.model.AllBooksTable;
 
 /**
@@ -15,12 +14,11 @@ import libmansystem.model.AllBooksTable;
  * @author jobmwesigwa
  */
 public class Library extends javax.swing.JFrame {
-    AllBooksTable abm;
+    AllBooksTable abm = new AllBooksTable();
     /**
      * Creates new form Library
      */
     public Library() {
-        abm = new AllBooksTable();
         initComponents();
     }
 
@@ -58,6 +56,7 @@ public class Library extends javax.swing.JFrame {
         publisher = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Available Books");
 
         jTable1.setModel(abm);
         jScrollPane1.setViewportView(jTable1);

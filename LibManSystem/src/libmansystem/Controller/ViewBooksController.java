@@ -79,8 +79,24 @@ public class ViewBooksController implements ActionListener {
         view.getPublisherMenuItem().addActionListener(this);
         view.setVisible(true);
         }
-        if(booksTable != null){
-            
+        if(availableBooks != null){
+        availableBooks.getAddBooksMenuItem().addActionListener(this);
+        availableBooks.getRemoveBookMenuItem().addActionListener(this);
+        availableBooks.getUpdateBookMenuItem().addActionListener(this);
+        availableBooks.getSearchBookMenuItem().addActionListener(this);
+        availableBooks.getBorrowBooksMenuItem().addActionListener(this);
+        availableBooks.getViewAllBooksMenuItem().addActionListener(this);
+        availableBooks.getViewAvailableBooksMenuItem().addActionListener(this);
+        availableBooks.getViewBorrwedBooksMenuItem().addActionListener(this);
+        availableBooks.getViewAllBooksMenuItem().addActionListener(this);
+        availableBooks.getAuthorMenuItem().addActionListener(this);
+        availableBooks.getTitleMenuItem().addActionListener(this);
+//        availableBooks.getAddButton().addActionListener(this);
+//        availableBooks.getDeleteButton().addActionListener(this);
+//        availableBooks.getSearchButton().addActionListener(this);
+//        availableBooks.getEditButton().addActionListener(this);
+        availableBooks.getPublisherMenuItem().addActionListener(this);
+        availableBooks.setVisible(true);
         }
         if(availableBooks != null){
             
@@ -109,8 +125,7 @@ public class ViewBooksController implements ActionListener {
 //    }
     
     public void actionPerformed (ActionEvent e){
-        if(e.getSource()== view.getAddBooksMenuItem() || e.getSource()==view.getAddButton()||
-                e.getSource()== availableBooks.getAddBooksMenuItem()){
+        if(e.getSource()== view.getAddBooksMenuItem() || e.getSource()==view.getAddButton()){
             view.setVisible(false);
             AddBooks adb = new AddBooks();
             AddBookController adbc = new AddBookController(booksTable);
@@ -134,10 +149,15 @@ public class ViewBooksController implements ActionListener {
             ub.setVisible(true);
             
         }
-        if(e.getSource()== view.getSearchBookMenuItem()||e.getSource()==view.getSearchButton()||
-                e.getSource()== availableBooks.getSearchBookMenuItem()){
+        if(e.getSource()== view.getSearchBookMenuItem()||e.getSource()==view.getSearchButton()){
             //Get and display the the search book frame
-            //call the search book contructor 
+            //call the search book contructor
+            SearchFrame sf  = new SearchFrame();
+            AllBooksTable abt = booksTable.getInstance();
+            SearchBookController sbc = new SearchBookController(sf,abt);
+            sbc.control();
+            sf.setVisible(true);
+            
         }
         if(e.getSource()== view.getBorrowBooksMenuItem()){
             

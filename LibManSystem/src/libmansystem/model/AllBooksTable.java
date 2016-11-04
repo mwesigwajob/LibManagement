@@ -33,7 +33,7 @@ public class AllBooksTable extends AbstractTableModel{
     public AllBooksTable() {
         super();
         bookList = new ArrayList<>();
-        //fetchTableData();
+        fetchTableData();
         
     }
 
@@ -134,7 +134,7 @@ public class AllBooksTable extends AbstractTableModel{
             Connection con = null;
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             con = java.sql.DriverManager.getConnection(
-                    "jdbc:mysql://localhost/studentdatabase?user=root&password=19D15FA1");
+                    "jdbc:mysql://localhost/studentdatabase?user=root&password=0030104018profib");
 
             PreparedStatement ps = con.prepareStatement("Insert into Books set BookID=?, Subject=?, Title=?, Author=?, Publisher=?, Copyright=?, Edition=?, Pages=?, ISBN=?, NumberOfBooks=?, ShelfNo=?");
             ps.setInt(1, id);
@@ -163,7 +163,7 @@ public class AllBooksTable extends AbstractTableModel{
             Connection con = null;
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             con = java.sql.DriverManager.getConnection(
-                    "jdbc:mysql://localhost/studentdatabase?user=root&password=19D15FA1");
+                    "jdbc:mysql://localhost/studentdatabase?user=root&password=0030104018profib");
 
             PreparedStatement ps = con.prepareStatement("update Books set BookID=?, Subject=?, Title=?, Author=?, Publisher=?, Copyright=?, Edition=?, Pages=?, ISBN=?, NumberOfBooks=?, ShelfNo=?");
             ps.setInt(1, id);
@@ -194,7 +194,7 @@ public class AllBooksTable extends AbstractTableModel{
                     Connection con = null;
                     Class.forName("com.mysql.jdbc.Driver").newInstance();
                     con = java.sql.DriverManager.getConnection(
-                            "jdbc:mysql://localhost/studentdatabase?user=root&password=19D15FA1");
+                            "jdbc:mysql://localhost/studentdatabase?user=root&password=0030104018profib");
                     PreparedStatement ps = con.prepareStatement("select * from Books where Title=?");
                     ps.setString(1, title);
                     System.out.println("Success: " + ps.execute());
@@ -213,7 +213,7 @@ public class AllBooksTable extends AbstractTableModel{
                     Connection con = null;
                     Class.forName("com.mysql.jdbc.Driver").newInstance();
                     con = java.sql.DriverManager.getConnection(
-                            "jdbc:mysql://localhost/studentdatabase?user=root&password=19D15FA1");
+                            "jdbc:mysql://localhost/studentdatabase?user=root&password=0030104018profib");
                     PreparedStatement ps = con.prepareStatement("select * from Books where Author=?");
                     ps.setString(1, author);
                     System.out.println("Success: " + ps.execute());
@@ -232,7 +232,7 @@ public class AllBooksTable extends AbstractTableModel{
                     Connection con = null;
                     Class.forName("com.mysql.jdbc.Driver").newInstance();
                     con = java.sql.DriverManager.getConnection(
-                            "jdbc:mysql://localhost/studentdatabase?user=root&password=19D15FA1");
+                            "jdbc:mysql://localhost/studentdatabase?user=root&password=0030104018profib");
                     PreparedStatement ps = con.prepareStatement("select * from Books where StudentID=?");
                     ps.setInt(1, stId);
                     System.out.println("Success: " + ps.execute());
@@ -251,7 +251,7 @@ public class AllBooksTable extends AbstractTableModel{
                     Connection con = null;
                     Class.forName("com.mysql.jdbc.Driver").newInstance();
                     con = java.sql.DriverManager.getConnection(
-                            "jdbc:mysql://localhost/studentdatabase?user=root&password=19D15FA1");
+                            "jdbc:mysql://localhost/studentdatabase?user=root&password=0030104018profib");
                     PreparedStatement ps = con.prepareStatement("delete from Books where StudentID=?");
                     ps.setInt(1, stId);
                     System.out.println("Success: " + ps.execute());
@@ -268,7 +268,7 @@ public class AllBooksTable extends AbstractTableModel{
             Connection conn = null;
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             conn = java.sql.DriverManager.getConnection(
-                    "jdbc:mysql://localhost/Library?user=root&password=19D15FA1");
+                    "jdbc:mysql://localhost/Library?user=root&password=0030104018profib");
 
             Statement s = conn.createStatement();
 

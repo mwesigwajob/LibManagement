@@ -5,6 +5,8 @@
  */
 package libmansystem.Views;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author Ibrahim-Abdullah
@@ -31,7 +33,7 @@ public class SearchFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         searchCriteriaCmb = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        keywordTxf = new javax.swing.JTextField();
+        keyword = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
 
@@ -74,7 +76,7 @@ public class SearchFrame extends javax.swing.JFrame {
                                 .addComponent(btnCancel))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(searchCriteriaCmb, 0, 138, Short.MAX_VALUE)
-                                .addComponent(keywordTxf))))
+                                .addComponent(keyword))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -92,7 +94,7 @@ public class SearchFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(keywordTxf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(keyword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSearch)
@@ -141,14 +143,25 @@ public class SearchFrame extends javax.swing.JFrame {
             }
         });
     }
-
+public JButton getCancelButton(){
+    return btnCancel;
+}
+public JButton getSearchButton(){
+    return btnSearch;
+}
+public String getSearchCriteria(){
+    return searchCriteriaCmb.getSelectedItem().toString();
+}
+public String getKeyword(){
+    return keyword.getText();
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnSearch;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField keywordTxf;
+    private javax.swing.JTextField keyword;
     private javax.swing.JComboBox<String> searchCriteriaCmb;
     // End of variables declaration//GEN-END:variables
 }

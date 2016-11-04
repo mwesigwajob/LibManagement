@@ -41,7 +41,7 @@
                           </Group>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="searchCriteriaCmb" pref="138" max="32767" attributes="0"/>
-                              <Component id="keywordTxf" max="32767" attributes="0"/>
+                              <Component id="keyword" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -67,7 +67,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                  <Component id="keywordTxf" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="keyword" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -112,7 +112,7 @@
         <Property name="text" type="java.lang.String" value="Write the Keyword"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="keywordTxf">
+    <Component class="javax.swing.JTextField" name="keyword">
     </Component>
     <Component class="javax.swing.JButton" name="btnSearch">
       <Properties>
