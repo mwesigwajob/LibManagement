@@ -10,18 +10,20 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import libmansystem.Views.*;
 import libmansystem.model.AllBooksTable;
+import libmansystem.model.Book;
 /**
  *
  * @author Ibrahim-Abdullah
  */
 public class AddBookController implements ActionListener{
-    
+    Library lib;
     AddBooks addBookview;
     UpdateBook updateBookView;
     AllBooksTable model;
     //TableFrame tf;
 
     public AddBookController(AllBooksTable model) {
+        lib = null;
         addBookview =null;
         updateBookView = null;
         this.model = model;
@@ -34,7 +36,7 @@ public class AddBookController implements ActionListener{
         }
         
         if(updateBookView != null){
-            updateBookView.getEditButton().addActionListener(this);
+            updateBookView.getUpdateEditButton().addActionListener(this);
             updateBookView.getUpdateButton().addActionListener(this);
             updateBookView.getUpdateExitButton().addActionListener(this);
         }
@@ -49,7 +51,7 @@ public class AddBookController implements ActionListener{
             //update the table of books shown in the table
             addBookview.dispose();
             Library allBooksFrame = new Library();
-            AllBooksTable allBooksTable= new AllBooksTable();
+            AllBooksTable allBooksTable= model.getInstance();
             ViewBooksController  viewBooks= new ViewBooksController(allBooksTable);//remeber to add the model
             viewBooks.setLibraryForm(allBooksFrame);
             viewBooks.control();
@@ -68,14 +70,19 @@ public class AddBookController implements ActionListener{
             String numPages = addBookview.getNumPages();
             String numCopies = addBookview.getNumCopies();
             String shelfNum = addBookview.getShelfNum();
-            model.addRecord(Integer.parseInt(bookID), subject, title,author, 
+            boolean success = model.addRecord(Integer.parseInt(bookID), subject, title,author, 
             publisher, Integer.parseInt(copyright), Integer.parseInt(edition),
             Integer.parseInt(numPages),isbn, Integer.parseInt(numCopies), 
             Integer.parseInt(shelfNum));
             //Pass a method in model to insert into database
+            
+            if(success)
+                JOptionPane.showMessageDialog(null,"Book has been added to the database succesfully");
+            else
+                JOptionPane.showMessageDialog(null,"Book could not be added to the database");
         }
         
-        if(ae.getSource()==updateBookView.getBookID()){
+        if(ae.getSource()==updateBookView.getUpdateEditButton()){
             
             //Get the Book ID specified,
             //Search the table to find if there exist a book with the specified ID
@@ -86,7 +93,26 @@ public class AddBookController implements ActionListener{
             //Will implement this when the table model in the model
             //Is finished
             String bookID = updateBookView.getBookID();
-            model.searchByID(Integer.parseInt(bookID));
+            try{
+            Book bookRecord = model.searchByID(Integer.parseInt(bookID));
+            if(bookRecord != null){
+                updateBookView.setAuthor(bookRecord.getAuthor());
+                updateBookView.setBookTitle(bookRecord.getTitle());
+                updateBookView.setPublisher(bookRecord.getPublisher());
+                updateBookView.setBookSubject(bookRecord.getSubject());
+                updateBookView.setCopyright(Integer.toString(bookRecord.getCopyright()));
+                updateBookView.setNumCopies(bookRecord.getNumCopies());
+                updateBookView.setNumPages(bookRecord.getNumPages());
+                updateBookView.setShelfNum(bookRecord.getShelfNum());
+                updateBookView.setEdition(Integer.toString(bookRecord.getEdition()));
+                updateBookView.setISBN(bookRecord.getISBN());
+                
+            
+            }
+            }
+            catch(Exception e){
+                    JOptionPane.showMessageDialog(null,"Book ID is incorrect");
+                    }
         }
         
         if(ae.getSource()==updateBookView.getUpdateButton()){
@@ -95,7 +121,7 @@ public class AddBookController implements ActionListener{
             //Notify user if there is an error or any invalide input 
             //using a message dialog box.
             //Otherwise,Update the record of the book in the database.
-            String bookID = updateBookView.getBookSubject();
+            String bookID = updateBookView.getBookID();
             String subject = updateBookView.getBookSubject();
             String title = updateBookView.getBookTitle();
             String author = updateBookView.getAuthor();
@@ -108,22 +134,25 @@ public class AddBookController implements ActionListener{
             String shelfNum = updateBookView.getShelfNum();
             
             //Update record in the database
-            model.updateRecord(Integer.parseInt(bookID), subject,title,
-            author,publisher,Integer.parseInt(copyright),Integer.parseInt(edition),Integer.parseInt(numPages),isbn, 
+            boolean success = model.updateRecord(Integer.parseInt(bookID), subject,title,
+            author,publisher,Integer.parseInt(copyright),Integer.parseInt(edition),
+            Integer.parseInt(numPages),isbn, 
             Integer.parseInt(numCopies),Integer.parseInt(shelfNum));
 //            boolean success = fieldValidation(subject,title,author,publisher,
 //                    copyright,edition,isbn,numPages,numCopies,shelfNum);
-//            if(success){
+            if(!success){
                 //Call a method in the model that will update record of the book 
                 //in in the database
                 //show a success message if the num of rows affected 
                 //is greater than or equal to 1
                 //show the update form with no values
-//                resetField("updateBook");
+                JOptionPane.showMessageDialog(null,"Book has been updated");
+               resetField("updateBook");
             }
             else{
                 //Notify user that record was not updated
                 //show the update form with values
+                JOptionPane.showMessageDialog(null,"Book could not be updated");
             }
         
         if(ae.getActionCommand().equals("Cancel")){
@@ -138,6 +167,7 @@ public class AddBookController implements ActionListener{
             viewBooks.control();
         }
  }
+    }
     public void setAddBookView(AddBooks addBooks){
         this.addBookview = addBooks;
     }

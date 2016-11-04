@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -127,14 +128,15 @@ public class AllBooksTable extends AbstractTableModel{
         fireTableCellUpdated(row, col); //Updating the view
     }
     
-    public void addRecord(int id, String sub, String title, String author, 
+    public boolean addRecord(int id, String sub, String title, String author, 
             String pub, int cpyrt, int edtn, int pgs,String isbn, int numBooks, 
             int shelfNum) {
+            boolean success;
         try {
             Connection con = null;
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             con = java.sql.DriverManager.getConnection(
-                    "jdbc:mysql://localhost/studentdatabase?user=root&password=0030104018profib");
+                    "jdbc:mysql://localhost/Library?user=root&password=0030104018profib");
 
             PreparedStatement ps = con.prepareStatement("Insert into Books set BookID=?, Subject=?, Title=?, Author=?, Publisher=?, Copyright=?, Edition=?, Pages=?, ISBN=?, NumberOfBooks=?, ShelfNo=?");
             ps.setInt(1, id);
@@ -148,43 +150,50 @@ public class AllBooksTable extends AbstractTableModel{
             ps.setString(9, isbn);
             ps.setInt(10, numBooks);
             ps.setInt(11, shelfNum);
-            System.out.println(ps.execute());
+            success = ps.execute();
             
         } catch (Exception e) {
-            System.out.println("Error " + e.toString());
-            return;
+            JOptionPane.showMessageDialog(null,"Error" + e.toString());
+            return false;
         }
         
         bookModel.fireTableDataChanged();
+        return success;
     }
     
-    public void updateRecord(int id, String sub, String title, String author, String pub, int cpyrt, int edtn, int pgs,String isbn, int numBooks, int shelfNum) {
+    public boolean updateRecord(int id, String sub, String title, String author, 
+            String pub, int cpyrt, int edtn, int pgs,String isbn, int numBooks, 
+            int shelfNum) {
+        boolean success;
         try {
             Connection con = null;
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             con = java.sql.DriverManager.getConnection(
-                    "jdbc:mysql://localhost/studentdatabase?user=root&password=0030104018profib");
+                    "jdbc:mysql://localhost/Library?user=root&password=0030104018profib");
 
-            PreparedStatement ps = con.prepareStatement("update Books set BookID=?, Subject=?, Title=?, Author=?, Publisher=?, Copyright=?, Edition=?, Pages=?, ISBN=?, NumberOfBooks=?, ShelfNo=?");
-            ps.setInt(1, id);
-            ps.setString(2, sub);
-            ps.setString(3, title);
-            ps.setString(4, author);
-            ps.setString(5, pub);
-            ps.setInt(6, cpyrt);
-            ps.setInt(7, edtn);
-            ps.setInt(8, pgs);
-            ps.setString(9, isbn);
-            ps.setInt(10, numBooks);
-            ps.setInt(11, shelfNum);
-            System.out.println(ps.execute());
-            
+            PreparedStatement ps = con.prepareStatement("update Books set Subject=?, "
+                    + "Title=?, Author=?, Publisher=?, Copyright=?, Edition=?, Pages=?,"
+                    + " ISBN=?, NumberOfBooks=?, ShelfNo=? where BookID="+ " '"+ id+" '");
+            //ps.setInt(1, id);
+            ps.setString(1, sub);
+            ps.setString(2, title);
+            ps.setString(3, author);
+            ps.setString(4, pub);
+            ps.setInt(5, cpyrt);
+            ps.setInt(6, edtn);
+            ps.setInt(7, pgs);
+            ps.setString(8, isbn);
+            ps.setInt(9, numBooks);
+            ps.setInt(10, shelfNum);
+            success = ps.execute();
+            System.out.println(success);
         } catch (Exception e) {
-            System.out.println("Error " + e.toString());
-            return;
+            JOptionPane.showMessageDialog(null,"Error" + e.toString());
+            return false;
         }
         
-        bookModel.fireTableDataChanged();
+        //bookModel.fireTableDataChanged();
+        return success;
     }
     
     public void searchByTitle(String title) {
@@ -194,7 +203,7 @@ public class AllBooksTable extends AbstractTableModel{
                     Connection con = null;
                     Class.forName("com.mysql.jdbc.Driver").newInstance();
                     con = java.sql.DriverManager.getConnection(
-                            "jdbc:mysql://localhost/studentdatabase?user=root&password=0030104018profib");
+                            "jdbc:mysql://localhost/Library?user=root&password=0030104018profib");
                     PreparedStatement ps = con.prepareStatement("select * from Books where Title=?");
                     ps.setString(1, title);
                     System.out.println("Success: " + ps.execute());
@@ -213,7 +222,7 @@ public class AllBooksTable extends AbstractTableModel{
                     Connection con = null;
                     Class.forName("com.mysql.jdbc.Driver").newInstance();
                     con = java.sql.DriverManager.getConnection(
-                            "jdbc:mysql://localhost/studentdatabase?user=root&password=0030104018profib");
+                            "jdbc:mysql://localhost/Library?user=root&password=0030104018profib");
                     PreparedStatement ps = con.prepareStatement("select * from Books where Author=?");
                     ps.setString(1, author);
                     System.out.println("Success: " + ps.execute());
@@ -225,23 +234,26 @@ public class AllBooksTable extends AbstractTableModel{
         }
     }
     
-    public void searchByID(int stId) {
+    public Book searchByID(int stId) {
         for (int i = 0; i < bookList.size(); i++) {
             if ((bookList.get(i).getBookID()) == stId) {
-                try {
-                    Connection con = null;
-                    Class.forName("com.mysql.jdbc.Driver").newInstance();
-                    con = java.sql.DriverManager.getConnection(
-                            "jdbc:mysql://localhost/studentdatabase?user=root&password=0030104018profib");
-                    PreparedStatement ps = con.prepareStatement("select * from Books where StudentID=?");
-                    ps.setInt(1, stId);
-                    System.out.println("Success: " + ps.execute());
-                } catch (Exception e) {
-                    System.out.println("Error " + e.toString());
-                    return;
-                }
+                return bookList.get(i);
+//                try {
+//                    Connection con = null;
+//                    Class.forName("com.mysql.jdbc.Driver").newInstance();
+//                    con = java.sql.DriverManager.getConnection(
+//                            "jdbc:mysql://localhost/Library?user=root&password=0030104018profib");
+//                    PreparedStatement ps = con.prepareStatement("select * from Books where BookID=?");
+//                    ps.setInt(1, stId);
+//                    System.out.println("Success: " + ps.execute());
+//                } catch (Exception e) {
+//                    System.out.println("Error " + e.toString());
+//                    return;
+//                }
             }
+            
         }
+        return null;
     }
     
     public void deleteRecord(int stId) {
@@ -251,7 +263,7 @@ public class AllBooksTable extends AbstractTableModel{
                     Connection con = null;
                     Class.forName("com.mysql.jdbc.Driver").newInstance();
                     con = java.sql.DriverManager.getConnection(
-                            "jdbc:mysql://localhost/studentdatabase?user=root&password=0030104018profib");
+                            "jdbc:mysql://localhost/Library?user=root&password=0030104018profib");
                     PreparedStatement ps = con.prepareStatement("delete from Books where StudentID=?");
                     ps.setInt(1, stId);
                     System.out.println("Success: " + ps.execute());
